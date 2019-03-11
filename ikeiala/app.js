@@ -15,7 +15,7 @@ const flash      = require("connect-flash");
     
 
 mongoose
-  .connect('mongodb://localhost/ikeiala', {useNewUrlParser: true})
+  .connect(process.env.DB, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -80,6 +80,9 @@ app.use('/', index);
 
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
+
+const day = require('./routes/day');
+app.use('/day', day);
       
 
 module.exports = app;
