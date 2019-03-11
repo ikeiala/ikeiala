@@ -1,9 +1,11 @@
-{{#each series}}
+{{#each movies}}
+  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
   <h2>{{this.name}}</h2>
   <p>{{this.overview}}</p>
 {{/each}}
 
-{{#each movies}}
+{{#each series}}
+  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
   <h2>{{this.name}}</h2>
   <p>{{this.overview}}</p>
 {{/each}}

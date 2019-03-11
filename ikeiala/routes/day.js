@@ -2,6 +2,13 @@ const express = require('express')
 const router  = express.Router()
 const axios = require('axios')
 
+
+let movies = undefined
+let series = undefined
+let tomorrow = undefined
+let yesterday = undefined
+
+
 router.post('/', (req, res, next) => {
 
   const userDay = req.body.date
@@ -45,42 +52,36 @@ router.post('/', (req, res, next) => {
     dayAfterNormalized = dateAfter.getDate()
   }
 
-  const yesterday = `${dateBefore.getFullYear()}-${monthBeforeNormalized}-${dayBeforeNormalized}`
-  const tomorrow = `${dateAfter.getFullYear()}-${monthAfterNormalized}-${dayAfterNormalized}`
+  yesterday = `${dateBefore.getFullYear()}-${monthBeforeNormalized}-${dayBeforeNormalized}`
+  tomorrow = `${dateAfter.getFullYear()}-${monthAfterNormalized}-${dayAfterNormalized}`
 
-  console.log(yesterday, tomorrow)
+  let r1 = axios.get(`  https://api.themoviedb.org/3/discover/movie?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=${yesterday}&release_date.lte=${tomorrow}`)
+    .then (response => {
+      movies = response.data.results
+      return movies
+    })
+    .catch (err => {
+      console.log(err)
+    })
 
-  let movies = undefined
-  let series = undefined
-
-  axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${yesterday}&primary_release_date.lte=${tomorrow}`)
-  .then (response => {
-    movies = response.data.results
-    console.log("Pelis " + movies.length)
-    console.log("Holiiiiii")
-  })
-  .catch (err => {
-    console.log(err)
-  })
-  .then(() => {
-      axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&air_date.gte=${yesterday}&air_date.lte=${tomorrow}&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`)
-      .then (answer => {
+  let r2 = axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&air_date.gte=${yesterday}&air_date.lte=${tomorrow}&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`)
+    .then (answer => {
         series = answer.data.results
-      })
-      .catch (err => {
+        return series
+    })
+    .catch (err => {
         console.log(err)
-      })
-  })
-  .then(() => {
-    console.log(movies)
-    console.log("Series " + movies.length)    
-    res.render('day', {movies, series});
-    movies = undefined
-    series = undefined
-  })
+    })   
+
+  Promise.all([r1,r2])
+    .then (() => {
+      console.log(r1)
+      console.log(r2)
+      res.render('day', {movies, series});
+    })
+    .catch (err => {
+      console.log(err)
+    })
 });
-
-
-// https://image.tmdb.org/t/p/w1280/VAINA
 
 module.exports = router;
