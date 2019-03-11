@@ -154,7 +154,7 @@ router.post('/', (req, res, next) => {
         'Accept': 'application/json',
         'user-key': `e946f475539429b55eab2775f5d14022`
     },
-    data: `fields name,platforms,storyline,summary,screenshots,release_dates.date; where release_dates.date > ${dateBefore.getTime() / 1000 + 20000} & release_dates.date < ${dateAfter.getTime() / 1000};`
+    data: `fields name,platforms,storyline,summary,url,release_dates.date; where release_dates.date > ${dateBefore.getTime() / 1000 + 20000} & release_dates.date < ${dateAfter.getTime() / 1000};`
   })
     .then(response => {
       // release_dates.date > 631152000;
