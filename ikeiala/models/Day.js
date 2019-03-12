@@ -5,9 +5,7 @@ const daySchema = new Schema({
   title: String,
   description: {
     type: String,
-    default: "Wunderbar!"
   },
-  date: Date,
   events: [Schema.Types.ObjectId],
   comments: [Schema.Types.ObjectId],
 }, {
