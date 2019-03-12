@@ -11,6 +11,7 @@
   <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
   <h2>{{this.title}}</h2>
   <p>{{this.overview}}</p>
+  <a href="/user/{{id}}/movies">Add</a><br><br>
 {{/each}}
 
 <h1>SERIES</h1>
@@ -19,6 +20,7 @@
   <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
   <h2>{{this.name}}</h2>
   <p>{{this.overview}}</p>
+  <a href="/user/{{id}}/series">Add</a><br><br>
 {{/each}}
 
 {{#each tuits}}
@@ -45,4 +47,13 @@
     <p>{{this}},</p>
   {{/each}}
   <p><a href={{this.url}}>Leer más</a></p>
+  <a href="/user/{{id}}/games">Add</a><br><br>
 {{/each}}
+
+<hr>
+<h1>COMMENTS</h1>
+<form action="/comment/new/{{id}}" method="post">
+<label>Author: <input type="text" name="author" placeholder="¿Cómo te llamas?"></input></label><br><br>
+<label>Text: <textarea cols="50" name="text" placeholder="¿Qué quieres decir?"></textarea></label><br><br>
+<button type="submit">Enviar</button>
+</form>

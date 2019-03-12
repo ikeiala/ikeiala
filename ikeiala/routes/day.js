@@ -40,9 +40,7 @@ router.post('/', (req, res, next) => {
   .populate(`games`)
     .then(response => {
       if(response.length>0){
-        console.log("dia found")
-        console.log("print dia")
-        res.render('day', {movies:response[0].movies, series:response[0].series,tuits: response[0].tuits, wiki: response[0].wikis, games: response[0].games})
+        res.render('day', {movies:response[0].movies, series:response[0].series,tuits: response[0].tuits, wiki: response[0].wikis, games: response[0].games, id: response[0]._id})
       } else {
         const date = new Date(year, month, day, 12, 0, 0)
         const dateBefore = new Date(date - 86400000)
@@ -197,9 +195,6 @@ router.post('/', (req, res, next) => {
     data: `fields name,platforms,summary,url,release_dates.date; where release_dates.date > ${dateBefore.getTime() / 1000 + 20000} & release_dates.date < ${dateAfter.getTime() / 1000};`
   })
     .then(response => {
-      // release_dates.date > 631152000;
-      // {data: `fields name; release_dates.date > ${dateBefore.getTime()} & release_dates.date < ${dateAfter.getTime()}; limit 50`},
-      // data: `fields game,name,platform; date > ${dateBefore.getTime() / 1000} & date < ${dateAfter.getTime() / 1000}`
         games = response.data
         console.log(games)
         return games
@@ -207,7 +202,6 @@ router.post('/', (req, res, next) => {
     .catch(err => {
         console.error(err);
     });
-        
         
   
         Promise.all([r1,r2,r3,r4,r5])
@@ -237,11 +231,11 @@ router.post('/', (req, res, next) => {
   
                 Day.create(newday)
                   .then(day => {
+                    res.render('day', {movies:creations[0], series:creations[1], tuits: creations[2], wiki: creations[3], games: creations[4], id: day._id})
                     console.log("day created")
                   })
                   .catch(err=>console.log(`error creating the new day`, err))
                 
-                res.render('day', {movies:creations[0], series:creations[1], tuits: creations[2], wiki: creations[3], games: creations[4]})
                 links, titles, tuits = undefined  
               })
   
