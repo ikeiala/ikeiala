@@ -6,12 +6,16 @@ const cheerio = require('cheerio')
 const Day = require(`../models/Day`)
 const Movie = require(`../models/Movie`)
 const Serie = require(`../models/Serie`)
-// const igdb = require('igdb-api-node').default;
+const Tuit = require(`../models/Tuit`)
+const Wiki = require(`../models/Wiki`)
+const Game = require(`../models/Game`)
 
-// const client = igdb('e946f475539429b55eab2775f5d14022');
 
+
+const h2p = require('html2plaintext')
 
 let movies = undefined
+let games = undefined
 let series = undefined
 let wiki = undefined
 let tomorrow = undefined
@@ -31,11 +35,14 @@ router.post('/', (req, res, next) => {
   Day.find({"title":userDay})
   .populate(`movies`)
   .populate(`series`)
+  .populate(`tuits`)
+  .populate(`wikis`)
+  .populate(`games`)
     .then(response => {
       if(response.length>0){
         console.log("dia found")
         console.log("print dia")
-        res.render('day', {movies:response[0].movies, series:response[0].series})
+        res.render('day', {movies:response[0].movies, series:response[0].series,tuits: response[0].tuits, wiki: response[0].wikis, games: response[0].games})
       } else {
         const date = new Date(year, month, day, 12, 0, 0)
         const dateBefore = new Date(date - 86400000)
@@ -78,105 +85,128 @@ router.post('/', (req, res, next) => {
         yesterday = `${dateBefore.getFullYear()}-${monthBeforeNormalized}-${dayBeforeNormalized}`
         tomorrow = `${dateAfter.getFullYear()}-${monthAfterNormalized}-${dayAfterNormalized}`
       
-        let r1 = axios.get(`  https://api.themoviedb.org/3/discover/movie?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=${yesterday}&release_date.lte=${tomorrow}`)
-          .then (response => {
-            movies = response.data.results
-            return movies
+        let r1 = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&region=ES&sort_by=popularity.desc&include_adult=false&release_date.gte=${yesterday}&release_date.lte=${tomorrow}&with_release_type=2|3`)
+    .then (response => {
+      movies = response.data.results
+      return movies
+    })
+    .catch (err => {
+      console.log(err)
+    })
+ 
+  let r2 = axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&air_date.gte=${yesterday}&air_date.lte=${tomorrow}&timezone=Europe%2FMadrid&include_null_first_air_dates=false`)
+    .then (response => {
+        series = response.data.results
+ 
+        series = series.filter(show => {
+          return show.hasOwnProperty("overview") && show.overview !== "" && (show.original_language === "en" || show.original_language === "es")
+        })
+ 
+        return series
+    })
+    .catch (err => {
+        console.log(err)
+    })  
+ 
+  let r3 = rp({
+                uri: `https://www.trendinalia.com/twitter-trending-topics/spain/spain-${today}.html`,
+                transform: function (body) {
+                return cheerio.load(body);
+                }
+              })
+          .then($ => {
+         
+              $('a').each(function(i, elem) {
+                      links.push ($(this).attr('href'))
+                      titles.push ($(this).text())
+              })
+             
+              links = links.slice(links.indexOf("https://twitter.com/trendinaliaes") + 1, links.indexOf("https://twitter.com/trendinaliaes") + 11)
+              titles = titles.slice(titles.indexOf("Seguir a @trendinaliaes") + 1, titles.indexOf("Seguir a @trendinaliaes") + 11)
+             
+              tuits = []
+ 
+              titles.forEach((title, idx) => {
+                tuits.push({title,link:links[idx]})
+              })
+             
+              return tuits
+         
           })
-          .catch (err => {
-            console.log(err)
-          })
-      
-        let r2 = axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&air_date.gte=${yesterday}&air_date.lte=${tomorrow}&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`)
-          .then (response => {
-              series = response.data.results
-              return series
-          })
-          .catch (err => {
+          .catch(function (err) {
               console.log(err)
-          })   
-      
-        let r3 = rp({
-                      uri: `https://www.trendinalia.com/twitter-trending-topics/spain/spain-${today}.html`,
-                      transform: function (body) {
-                      return cheerio.load(body);
-                      }
-                    })
-                .then($ => {
-                
-                    $('a').each(function(i, elem) {
-                            links.push ($(this).attr('href'))
-                            titles.push ($(this).text())
-                    })
-                    
-                    links = links.slice(links.indexOf("https://twitter.com/trendinaliaes") + 1, links.indexOf("https://twitter.com/trendinaliaes") + 11)
-                    titles = titles.slice(titles.indexOf("Seguir a @trendinaliaes") + 1, titles.indexOf("Seguir a @trendinaliaes") + 11)
-                    
-                    tuits = []
-      
-                    titles.forEach((title, idx) => {
-                      tuits.push([title,links[idx]])
-                    })
-                    
-                    return tuits
-                
-                })
-                .catch(function (err) {
-                    console.log(err)
-                })
-      
-      
-        let r4 = axios.get(`https://es.wikipedia.org/w/api.php?action=parse&prop=text&page=Plantilla:Efem%C3%A9rides_-_${wikiToday}&format=json&formatversion=2`)
-        .then (response => {
-            wiki = response.data.parse.text
-            return wiki
-        })
-        .catch (err => {
-            console.log(err)
-        })   
-      
-      //   let r5 = client.games({
-      //     filters: {
-      //         'release_dates.date-gt': '2019-03-14',
-      //         'release_dates.date-lt': '2019-03-16'
-      //     },
-      //     limit: 10,
-      //     offset: 0,
-      //     order: 'release_dates.date:desc',
-      //     search: ''
-      // }, [
-      //     'name',
-      //     'release_dates.date',
-      //     'summary',
-      //     'platforms',
-      //     'cover'
-      // ])
-      // .then (response => {
-      //       console.log(response)
-      //   })
-      //   .catch (err => {
-      //       console.log(err)
-      //   })   
-      
-      
-        let r5 = axios({
-          url: "https://api-v3.igdb.com/games",
-          method: 'POST',
-          headers: {
-              'Accept': 'application/json',
-              'user-key': `e946f475539429b55eab2775f5d14022`
-          },
-          data: `fields name,platforms,storyline,summary,url,release_dates.date; where release_dates.date > ${dateBefore.getTime() / 1000 + 20000} & release_dates.date < ${dateAfter.getTime() / 1000};`
-        })
-          .then(response => {
-            // release_dates.date > 631152000;
-            // {data: `fields name; release_dates.date > ${dateBefore.getTime()} & release_dates.date < ${dateAfter.getTime()}; limit 50`},
-            // data: `fields game,name,platform; date > ${dateBefore.getTime() / 1000} & date < ${dateAfter.getTime() / 1000}`
-              //console.log(response.data);
           })
-          .catch(err => {
-              console.error(err);
-          });
+ 
+ 
+  let r4 = axios.get(`https://es.wikipedia.org/w/api.php?action=parse&prop=text&page=Plantilla:Efem%C3%A9rides_-_${wikiToday}&format=json&formatversion=2`)
+  .then (response => {
+      wiki = response.data.parse.text
+      wiki = wiki.split("<!--")
+      wiki = wiki[0].split("</div>")
+      img = wiki[0].split("srcset=")[1].split(",")[1].trim().split(" ")[0]
+      body = wiki[1].trim()
+      body = body.substring(4,body.length - 5).split("\n")
+ 
+      let years = body.map (wiki => {
+        let newWiki = ""
+        newWiki = wiki.split("</a>")[0].split(">")
+        newWiki = newWiki[newWiki.length - 1]
+        return newWiki
+      })
+ 
+      let links = body.map (wiki => {
+        let newWiki = ""
+        let lastIndexOf = wiki.lastIndexOf("</b>")
+        newWiki = wiki.substring(0,lastIndexOf)
+        newWiki = newWiki.split("<b>")
+        newWiki = newWiki[newWiki.length - 1].trim().split(" ")[1]
+        newWiki = newWiki.substring(6,newWiki.length - 1)
+        newWiki = "https://es.wikipedia.org" + newWiki
+        return newWiki
+      })
+ 
+      let descriptions = body.map (wiki => {
+        newWiki = h2p(wiki)
+        newWiki = newWiki.split(" ")
+        newWiki.shift()
+        return newWiki.join(" ")
+      })
+ 
+      wikis = []
+       
+      years.forEach((year,idx) => {
+        wikis.push({year:year,description:descriptions[idx],link:links[idx]})
+      })
+ 
+      return {img:img,wikis:wikis}
+     
+  })
+  .catch (err => {
+      console.log(err)
+  })  
+ 
+ 
+ 
+  let r5 = axios({
+    url: "https://api-v3.igdb.com/games",
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'user-key': `e946f475539429b55eab2775f5d14022`
+    },
+    data: `fields name,platforms,storyline,summary,url,release_dates.date; where release_dates.date > ${dateBefore.getTime() / 1000 + 20000} & release_dates.date < ${dateAfter.getTime() / 1000};`
+  })
+    .then(response => {
+      // release_dates.date > 631152000;
+      // {data: `fields name; release_dates.date > ${dateBefore.getTime()} & release_dates.date < ${dateAfter.getTime()}; limit 50`},
+      // data: `fields game,name,platform; date > ${dateBefore.getTime() / 1000} & date < ${dateAfter.getTime() / 1000}`
+        games = response.data
+        console.log(games)
+        return games
+    })
+    .catch(err => {
+        console.error(err);
+    });
         
         
   
@@ -184,17 +214,26 @@ router.post('/', (req, res, next) => {
           .then ((response) => {
             let createdMovies = Movie.insertMany(response[0])
             let createdSeries = Serie.insertMany(response[1])
+            let createdTuits = Tuit.insertMany(response[2])
+            let createdWiki = Wiki.create(response[3])
+            let createdGames =  Game.insertMany(response[4])
   
-            Promise.all([createdMovies,createdSeries])
+            Promise.all([createdMovies,createdSeries,createdTuits,createdWiki,createdGames])
               .then(creations => {
                 let newday = {
                   title:userDay,
                   description:`WUNDERBAR`,
                   movies: [],
-                  series: []
+                  series: [],
+                  tuits: [],
+                  games: [],
+                  wikis: []
                 }
                 creations[0].forEach(elm=>newday.movies.push(elm._id))
                 creations[1].forEach(elm=>newday.series.push(elm._id))
+                creations[2].forEach(elm=>newday.tuits.push(elm._id))
+                newday.wikis.push(creations[3]._id)
+                creations[4].forEach(elm=>newday.games.push(elm._id))
   
                 Day.create(newday)
                   .then(day => {
@@ -202,7 +241,7 @@ router.post('/', (req, res, next) => {
                   })
                   .catch(err=>console.log(`error creating the new day`, err))
                 
-                res.render('day', {movies:creations[0], series:creations[1]})
+                res.render('day', {movies:creations[0], series:creations[1], tuits: creations[2], wiki: creations[3], games: creations[4]})
                 links, titles, tuits = undefined  
               })
   
@@ -215,7 +254,6 @@ router.post('/', (req, res, next) => {
       
     })
     .catch(err=> console.log(err))
-
 
 
   

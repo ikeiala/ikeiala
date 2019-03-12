@@ -1,8 +1,19 @@
+<form action="/day" method="post">
+<label>Dime un día:
+<input type="date" name="date" placeholder="YYYY/MM/DD">
+</label>
+<button type="submit" id="send-day">Enviar</button>
+</form>
+
+<h1>MOVIES</h1>
+
 {{#each movies}}
   <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
-  <h2>{{this.name}}</h2>
+  <h2>{{this.title}}</h2>
   <p>{{this.overview}}</p>
 {{/each}}
+
+<h1>SERIES</h1>
 
 {{#each series}}
   <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
@@ -11,9 +22,27 @@
 {{/each}}
 
 {{#each tuits}}
-<p><a href={{this.[1]}}>{{this.[0]}}</a></p>
+<p><a href={{this.link}}>{{this.title}}</a></p>
 {{/each}}
 
 <div>
-{{{wiki}}}
+  <img src={{wiki.img}}>
+  <ul>
+  {{#each wiki.wikis}}
+    <li>{{this.year}}: {{this.description}}</li>
+    <p><a href={{this.link}}>Leer más</a></p>
+  {{/each}}
+  </ul>
+ 
 </div>
+
+<h1>GAMES</h1>
+
+{{#each games}}
+  <h2>{{this.name}}</h2>
+  <p>{{this.summary}}</p>
+  {{#each this.platforms}}
+    <p>{{this}},</p>
+  {{/each}}
+  <p><a href={{this.url}}>Leer más</a></p>
+{{/each}}

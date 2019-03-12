@@ -8,9 +8,9 @@ const daySchema = new Schema({
   },
   movies: [{type:Schema.Types.ObjectId, ref:"Movie"}],
   series: [{type:Schema.Types.ObjectId, ref:"Serie"}],
-  games: [Schema.Types.ObjectId],
-  wikis: [Schema.Types.ObjectId],
-  tuits: [Schema.Types.ObjectId],
+  games: [{type:Schema.Types.ObjectId, ref:"Game"}],
+  wikis: {type:Schema.Types.ObjectId, ref: "Wiki"},
+  tuits: [{type:Schema.Types.ObjectId, ref:"Tuit"}],
   comments: [Schema.Types.ObjectId],
 }, {
   timestamps: true
