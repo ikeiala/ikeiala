@@ -6,7 +6,11 @@ const daySchema = new Schema({
   description: {
     type: String,
   },
-  events: [Schema.Types.ObjectId],
+  movies: [{type:Schema.Types.ObjectId, ref:"Movie"}],
+  series: [Schema.Types.ObjectId],
+  games: [Schema.Types.ObjectId],
+  wikis: [Schema.Types.ObjectId],
+  tuits: [Schema.Types.ObjectId],
   comments: [Schema.Types.ObjectId],
 }, {
   timestamps: true
