@@ -29,11 +29,13 @@ router.post('/', (req, res, next) => {
   const day = parseInt(userDay.slice(8,10))
 
   Day.find({"title":userDay})
+  .populate(`movies`)
+  .populate(`series`)
     .then(response => {
       if(response.length>0){
         console.log("dia found")
         console.log("print dia")
-        
+        res.render('day', {movies:response[0].movies, series:response[0].series})
       } else {
         const date = new Date(year, month, day, 12, 0, 0)
         const dateBefore = new Date(date - 86400000)

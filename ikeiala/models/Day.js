@@ -7,7 +7,7 @@ const daySchema = new Schema({
     type: String,
   },
   movies: [{type:Schema.Types.ObjectId, ref:"Movie"}],
-  series: [Schema.Types.ObjectId],
+  series: [{type:Schema.Types.ObjectId, ref:"Serie"}],
   games: [Schema.Types.ObjectId],
   wikis: [Schema.Types.ObjectId],
   tuits: [Schema.Types.ObjectId],
