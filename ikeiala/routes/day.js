@@ -3,12 +3,10 @@ const router  = express.Router()
 const axios = require('axios')
 const rp = require('request-promise')
 const cheerio = require('cheerio')
-// const igdb = require('igdb-api-node').default;
-
-// const client = igdb('e946f475539429b55eab2775f5d14022');
-
+const h2p = require('html2plaintext')
 
 let movies = undefined
+let games = undefined
 let series = undefined
 let wiki = undefined
 let tomorrow = undefined
@@ -66,7 +64,7 @@ router.post('/', (req, res, next) => {
   yesterday = `${dateBefore.getFullYear()}-${monthBeforeNormalized}-${dayBeforeNormalized}`
   tomorrow = `${dateAfter.getFullYear()}-${monthAfterNormalized}-${dayAfterNormalized}`
 
-  let r1 = axios.get(`  https://api.themoviedb.org/3/discover/movie?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=${yesterday}&release_date.lte=${tomorrow}`)
+  let r1 = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&region=ES&sort_by=popularity.desc&include_adult=false&release_date.gte=${yesterday}&release_date.lte=${tomorrow}&with_release_type=2|3`)
     .then (response => {
       movies = response.data.results
       return movies
@@ -75,9 +73,14 @@ router.post('/', (req, res, next) => {
       console.log(err)
     })
 
-  let r2 = axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&air_date.gte=${yesterday}&air_date.lte=${tomorrow}&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`)
+  let r2 = axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&air_date.gte=${yesterday}&air_date.lte=${tomorrow}&timezone=Europe%2FMadrid&include_null_first_air_dates=false`)
     .then (response => {
         series = response.data.results
+
+        series = series.filter(show => {
+          return show.hasOwnProperty("overview") && show.overview !== "" && (show.original_language === "en" || show.original_language === "es")
+        })
+
         return series
     })
     .catch (err => {
@@ -117,7 +120,45 @@ router.post('/', (req, res, next) => {
   let r4 = axios.get(`https://es.wikipedia.org/w/api.php?action=parse&prop=text&page=Plantilla:Efem%C3%A9rides_-_${wikiToday}&format=json&formatversion=2`)
   .then (response => {
       wiki = response.data.parse.text
-      return wiki
+      wiki = wiki.split("<!--")
+      wiki = wiki[0].split("</div>")
+      img = wiki[0].split("srcset=")[1].split(",")[1].trim().split(" ")[0]
+      body = wiki[1].trim()
+      body = body.substring(4,body.length - 5).split("\n")
+
+      let years = body.map (wiki => {
+        let newWiki = ""
+        newWiki = wiki.split("</a>")[0].split(">")
+        newWiki = newWiki[newWiki.length - 1]
+        return newWiki
+      })
+
+      let links = body.map (wiki => {
+        let newWiki = ""
+        let lastIndexOf = wiki.lastIndexOf("</b>")
+        newWiki = wiki.substring(0,lastIndexOf)
+        newWiki = newWiki.split("<b>")
+        newWiki = newWiki[newWiki.length - 1].trim().split(" ")[1]
+        newWiki = newWiki.substring(6,newWiki.length - 1)
+        newWiki = "https://es.wikipedia.org" + newWiki
+        return newWiki
+      })
+
+      let descriptions = body.map (wiki => {
+        newWiki = h2p(wiki)
+        newWiki = newWiki.split(" ")
+        newWiki.shift()
+        return newWiki.join(" ")
+      })
+
+      wikis = []
+        
+      years.forEach((year,idx) => {
+        wikis.push({year:year,description:descriptions[idx],link:links[idx]})
+      })
+
+      return wikis
+      
   })
   .catch (err => {
       console.log(err)
@@ -160,7 +201,7 @@ router.post('/', (req, res, next) => {
       // release_dates.date > 631152000;
       // {data: `fields name; release_dates.date > ${dateBefore.getTime()} & release_dates.date < ${dateAfter.getTime()}; limit 50`},
       // data: `fields game,name,platform; date > ${dateBefore.getTime() / 1000} & date < ${dateAfter.getTime() / 1000}`
-        console.log(response.data);
+        games = response.data
     })
     .catch(err => {
         console.error(err);
