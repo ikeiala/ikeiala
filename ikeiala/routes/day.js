@@ -23,7 +23,7 @@ let yesterday = undefined
 let titles = []
 let links = []
 let tuits = []
-let meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+let meses = [,"enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
 router.post('/', (req, res, next) => {
 
