@@ -83,6 +83,10 @@ app.use('/auth', authRoutes);
 
 const day = require('./routes/day');
 app.use('/day', day);
-      
+
+const user = require('./routes/user');
+app.use('/user', user);
+ 
+
 
 module.exports = app;
