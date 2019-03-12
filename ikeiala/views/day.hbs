@@ -56,3 +56,9 @@
 <label>Text: <textarea cols="50" name="text" placeholder="¿Qué quieres decir?"></textarea></label><br><br>
 <button type="submit">Enviar</button>
 </form>
+
+<h3>List</h3>
+{{#each comments}}
+  <h5>{{this.author.username}}</h5>
+  <p>{{this.text}}</p>
+{{/each}}

@@ -38,9 +38,11 @@ router.post('/', (req, res, next) => {
   .populate(`tuits`)
   .populate(`wikis`)
   .populate(`games`)
+  .populate({path : 'comments', populate : {path : 'author'}}) //maravilloso que ésto sea así de sencillo
     .then(response => {
       if(response.length>0){
-        res.render('day', {movies:response[0].movies, series:response[0].series,tuits: response[0].tuits, wiki: response[0].wikis, games: response[0].games, id: response[0]._id})
+        console.log(response[0].comments)
+        res.render('day', {movies:response[0].movies, series:response[0].series,tuits: response[0].tuits, wiki: response[0].wikis, games: response[0].games, comments: response[0].comments,id: response[0]._id})
       } else {
         const date = new Date(year, month, day, 12, 0, 0)
         const dateBefore = new Date(date - 86400000)
