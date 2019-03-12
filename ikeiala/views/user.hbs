@@ -1,1 +1,31 @@
-<h1>Welcome {{username}}!</h1>
+<h1>Welcome {{user.username}}!</h1>
+<p>Email: {{user.email}}</p>
+<p>Bio: {{user.bio}}</p>
+
+<h1>AÑADIDO A FAVORITOS</h1>
+{{#each user.movies}}
+  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
+  <h2>{{this.title}} (película)</h2>
+  <p>{{this.overview}}</p>
+{{/each}}
+
+{{#each user.series}}
+  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
+  <h2>{{this.name}} (serie)</h2>
+  <p>{{this.overview}}</p>
+{{/each}}
+
+{{#each user.games}}
+  <h2>{{this.name}} (juego)</h2>
+  <p>{{this.summary}}</p>
+  {{#each this.platforms}}
+    <p>{{this}},</p>
+  {{/each}}
+  <p><a href={{this.url}}>Leer más</a></p>
+{{/each}}
+
+<h2>COMENTARIOS</h2>
+{{#each user.comments}}
+<p>{{this.text}}</p>
+<p>{{this.day}}</p>
+{{/each}}

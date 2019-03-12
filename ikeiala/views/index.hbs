@@ -6,3 +6,6 @@
 </label>
 <button type="submit" id="send-day">Enviar</button>
 </form>
+{{#if user}}
+<p><a href="/user/{{user.id}}">My profile</a></p>
+{{/if}}
