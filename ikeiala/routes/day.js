@@ -202,6 +202,7 @@ router.post('/', (req, res, next) => {
       // {data: `fields name; release_dates.date > ${dateBefore.getTime()} & release_dates.date < ${dateAfter.getTime()}; limit 50`},
       // data: `fields game,name,platform; date > ${dateBefore.getTime() / 1000} & date < ${dateAfter.getTime() / 1000}`
         games = response.data
+        console.log(games)
     })
     .catch(err => {
         console.error(err);
