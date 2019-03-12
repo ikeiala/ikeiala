@@ -23,7 +23,7 @@ let yesterday = undefined
 let titles = []
 let links = []
 let tuits = []
-let meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+let meses = ["", "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
 router.post('/', (req, res, next) => {
 
@@ -135,9 +135,10 @@ router.post('/', (req, res, next) => {
               console.log(err)
           })
  
- 
+          console.log(wikiToday)
   let r4 = axios.get(`https://es.wikipedia.org/w/api.php?action=parse&prop=text&page=Plantilla:Efem%C3%A9rides_-_${wikiToday}&format=json&formatversion=2`)
   .then (response => {
+
       wiki = response.data.parse.text
       wiki = wiki.split("<!--")
       wiki = wiki[0].split("</div>")
