@@ -7,8 +7,12 @@ const userSchema = new Schema({
   email: String,
   profile_pic: String,
   bio: String,
-  events: [Schema.Types.ObjectId],
-  comments: [Schema.Types.ObjectId]
+  movies: [{type:Schema.Types.ObjectId, ref:"Movie"}],
+  series: [{type:Schema.Types.ObjectId, ref:"Serie"}],
+  games: [{type:Schema.Types.ObjectId, ref:"Game"}],
+  wikis: {type:Schema.Types.ObjectId, ref: "Wiki"},
+  tuits: [{type:Schema.Types.ObjectId, ref:"Tuit"}],
+  comments: [{type:Schema.Types.ObjectId, ref:"Comment"}],
 }, {
   timestamps: true
 });

@@ -11,7 +11,7 @@ const daySchema = new Schema({
   games: [{type:Schema.Types.ObjectId, ref:"Game"}],
   wikis: {type:Schema.Types.ObjectId, ref: "Wiki"},
   tuits: [{type:Schema.Types.ObjectId, ref:"Tuit"}],
-  comments: [Schema.Types.ObjectId],
+  comments: [{type:Schema.Types.ObjectId, ref:"Comment"}],
 }, {
   timestamps: true
 });
