@@ -85,7 +85,7 @@ router.post('/', (req, res, next) => {
         yesterday = `${dateBefore.getFullYear()}-${monthBeforeNormalized}-${dayBeforeNormalized}`
         tomorrow = `${dateAfter.getFullYear()}-${monthAfterNormalized}-${dayAfterNormalized}`
       
-        let r1 = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&region=ES&sort_by=popularity.desc&include_adult=false&release_date.gte=${yesterday}&release_date.lte=${tomorrow}&with_release_type=2|3`)
+        let r1 = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIEAPIKEY}&language=es-ES&region=ES&sort_by=popularity.desc&include_adult=false&release_date.gte=${yesterday}&release_date.lte=${tomorrow}&with_release_type=2|3`)
     .then (response => {
       movies = response.data.results
       return movies
@@ -94,7 +94,7 @@ router.post('/', (req, res, next) => {
       console.log(err)
     })
  
-  let r2 = axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=3aa350912efdcc79b7c8fddde2759632&language=es-ES&sort_by=popularity.desc&air_date.gte=${yesterday}&air_date.lte=${tomorrow}&timezone=Europe%2FMadrid&include_null_first_air_dates=false`)
+  let r2 = axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.MOVIEAPIKEY}&language=es-ES&sort_by=popularity.desc&air_date.gte=${yesterday}&air_date.lte=${tomorrow}&timezone=Europe%2FMadrid&include_null_first_air_dates=false`)
     .then (response => {
         series = response.data.results
  
@@ -192,9 +192,9 @@ router.post('/', (req, res, next) => {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
-        'user-key': `e946f475539429b55eab2775f5d14022`
+        'user-key': process.env.GAMEAPIKEY
     },
-    data: `fields name,platforms,storyline,summary,url,release_dates.date; where release_dates.date > ${dateBefore.getTime() / 1000 + 20000} & release_dates.date < ${dateAfter.getTime() / 1000};`
+    data: `fields name,platforms,summary,url,release_dates.date; where release_dates.date > ${dateBefore.getTime() / 1000 + 20000} & release_dates.date < ${dateAfter.getTime() / 1000};`
   })
     .then(response => {
       // release_dates.date > 631152000;
