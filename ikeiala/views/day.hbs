@@ -1,3 +1,7 @@
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/javascripts/addbutton.js"></script>
+
 <p>El día de hoy: {{dayTitle}}</p>
 
 
@@ -14,7 +18,7 @@
   <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
   <h2>{{this.title}}</h2>
   <p>{{this.overview}}</p>
-  <a href="/user/new/{{../dayTitle}}/{{id}}/movies">Add</a><br><br>
+  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`movies`)">Add</button>
 {{/each}}
 
 <h1>SERIES</h1>
@@ -23,7 +27,7 @@
   <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
   <h2>{{this.name}}</h2>
   <p>{{this.overview}}</p>
-  <a href="/user/new/{{../dayTitle}}/{{id}}/series">Add</a><br><br>
+  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`series`)">Add</button>
 {{/each}}
 
 {{#each tuits}}
@@ -50,20 +54,26 @@
     <p>{{this}},</p>
   {{/each}}
   <p><a href={{this.url}}>Leer más</a></p>
-  <a href="/user/new/{{../dayTitle}}/{{id}}/games">Add</a><br><br>
+  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`games`)">Add</button>
 {{/each}}
 
 <hr>
 <h1>COMMENTS</h1>
-<h3>List</h3>
+<h3 id="commentlist">List</h3>
 {{#each comments}}
  <h5>{{this.author.username}}</h5>
  <p>{{this.text}}</p>
 {{/each}}
 <hr>
-<form action="/comment/new/{{id}}" method="post">
-<label>Text: <textarea cols="50" name="text" placeholder="¿Qué quieres decir?"></textarea></label><br><br>
-<button type="submit">Enviar</button>
-</form>
+
+<label>Text: <textarea id="textcomment" cols="50" name="text" placeholder="¿Qué quieres decir?"></textarea></label><br><br>
+<button onclick="addComment(`{{id}}`)">Enviar</button>
+
+
+
+
+
+
+
 
 

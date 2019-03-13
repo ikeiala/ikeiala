@@ -8,6 +8,7 @@ const userSchema = new Schema({
   profile_pic: String,
   bio: String,
   days: [{type:Schema.Types.ObjectId, ref:"UserDay"}],
+  comments: [{type:Schema.Types.ObjectId, ref:"Comment"}],
 }, {
   timestamps: true
 });

@@ -24,6 +24,7 @@ router.post('/comment/new/:id', (req, res, next) => {
       User.findByIdAndUpdate({_id:req.user._id},{ $push: { comments: commentcreated._id }},{new:true})
       .then(user => {
         console.log("user updated its comments list")
+        res.json({text:commentcreated.text,author:req.user.username})
       })
       .catch(err => console.log(`Error finding user: ${err}`))
 

@@ -4,12 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const log = document.getElementById(`logbutton`)
   const login = document.getElementById(`login`)
  
-  const loginform = document.getElementById(`loginform`)
- 
   const sign = document.getElementById(`signupbutton`)
   const signup = document.getElementById(`signup`)
  
   const signup_loginbutton = document.getElementById("signup_loginbutton")
+
 
 
   log.onclick = e => {

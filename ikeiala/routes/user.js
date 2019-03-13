@@ -25,7 +25,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.get('/new/:dayTitle/:itemId/:type', (req, res, next) => {
-  
+  console.log(req.params)
   User.findById(req.user.id)
   .populate("days")
   .then (user => {
@@ -42,6 +42,7 @@ router.get('/new/:dayTitle/:itemId/:type', (req, res, next) => {
       .then(userDay => {
         console.log("Holiiiii")
         console.log(userDay)
+        res.json({x:"hola"})
       })
       .catch(err => {
         console.log("Uhhhhhh" + err)
@@ -72,6 +73,7 @@ router.get('/new/:dayTitle/:itemId/:type', (req, res, next) => {
                   User.findByIdAndUpdate({_id:req.user._id},{ $push: { days: newUserDay}},{new:true})
                   .then(user => {
                     console.log("userday added to user array")
+                    res.redirect(`/user/${req.user._id}`)
                   })
                   .catch(err => {
                     console.log("something bad happened adding userday to user array" + err)
