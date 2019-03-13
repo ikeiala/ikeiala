@@ -63,6 +63,7 @@ hbs.registerHelper('ifUndefined', (value, options) => {
 
 // default value for title local
 app.locals.title = 'Ikeiala - La agenda de las cosas que te importan';
+app.locals.url = JSON.stringify(process.env.URL)
 
 
 // Enable authentication using session + passport
