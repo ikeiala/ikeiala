@@ -1,27 +1,22 @@
 <h1>Welcome {{user.username}}!</h1>
+<img src={{user.profile_pic}}>
 <p>Email: {{user.email}}</p>
 <p>Bio: {{user.bio}}</p>
 
-<h1>AÑADIDO A FAVORITOS</h1>
-{{#each user.movies}}
-  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
-  <h2>{{this.title}} (película)</h2>
-  <p>{{this.overview}}</p>
-{{/each}}
-
-{{#each user.series}}
-  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
-  <h2>{{this.name}} (serie)</h2>
-  <p>{{this.overview}}</p>
-{{/each}}
-
-{{#each user.games}}
-  <h2>{{this.name}} (juego)</h2>
-  <p>{{this.summary}}</p>
-  {{#each this.platforms}}
-    <p>{{this}},</p>
+{{#each user.days}}
+  <h1>Agenda del día {{this.title}}</h1>
+  <h2>Estrenos de cine:</h2>
+  {{#each movies}}
+    {{> moviePartial this}}
   {{/each}}
-  <p><a href={{this.url}}>Leer más</a></p>
+  <h2>Nuevos episodios en series:</h2>
+  {{#each series}}
+    {{> seriesPartial this}}
+  {{/each}}
+  <h2>Lanzamientos en videojuegos:</h2>
+  {{#each games}}
+    {{> gamePartial this}}
+  {{/each}}
 {{/each}}
 
 <h2>COMENTARIOS</h2>

@@ -3,6 +3,8 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
 
+const uploadCloud = require('../config/cloudinary.js');
+
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -23,11 +25,14 @@ router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
-router.post("/signup", (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  const email = req.body.email;
-  const bio = req.body.bio;
+router.post("/signup", uploadCloud.single('profile_pic'), (req, res, next) => {
+  const username = req.body.username
+  const password = req.body.password
+  const email = req.body.email
+  const bio = req.body.bio
+  const profile_pic = req.file.url
+  const imgName = req.file.originalname
+
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
     return;
@@ -46,7 +51,8 @@ router.post("/signup", (req, res, next) => {
       username,
       password: hashPass,
       email,
-      bio
+      bio,
+      profile_pic
     });
 
     newUser.save()

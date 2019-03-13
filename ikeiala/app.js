@@ -62,7 +62,7 @@ hbs.registerHelper('ifUndefined', (value, options) => {
   
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Ikeiala - La agenda de las cosas que te importan';
 
 
 // Enable authentication using session + passport

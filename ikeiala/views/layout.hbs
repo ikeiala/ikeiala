@@ -12,7 +12,6 @@
   <nav>
     <a href="/">Home</a>
     <a id="logbutton" href="">Login</a>
-    <a href="/auth/signup">Signup</a>
     <a href="/auth/logout">Logout</a>
   </nav>
 
@@ -40,7 +39,7 @@
   </div>
   <div id="signup">
     <h2>Signup</h2>
-    <form action="/auth/signup" method="POST" id="signupform">
+    <form action="/auth/signup" method="POST" id="signupform" enctype="multipart/form-data">
       <label for="username">Username</label>
       <input type="text" name="username" placeholder="Your name">
       <br><br>
@@ -55,6 +54,10 @@
       <label for="bio">Bio</label>
       <textarea cols="50" name="bio" placeholder="Your bio"></textarea>
       
+      <br><br>
+      <label for="profile_pic">Foto de perfil</label>
+      <input type="file" name="profile_pic">
+
       <br>
       {{#if message }}
         <div class="error-message">{{ message }}</div>

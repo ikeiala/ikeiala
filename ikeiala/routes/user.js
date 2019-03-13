@@ -8,17 +8,27 @@ const Day = require(`../models/Day`)
 const UserDay = require(`../models/UserDay`)
 
 
+function ensureAuthenticatedAndOwner(req, res, next) {
+  if (req.isAuthenticated() && req.user.id === req.params.id) {
+    return next();
+  } else {
+    res.redirect('/')
+  }
+}
 
-
-
-router.get('/:id', (req, res, next) => {
+router.get('/:id', ensureAuthenticatedAndOwner, (req, res, next) => {
   User.findById(req.params.id)
-  .populate(`movies`).populate(`series`).populate(`games`)
+  .populate({path: "days", populate: {path: "movies"}})
+  .populate({path: "days", populate: {path: "series"}})
+  .populate({path: "days", populate: {path: "games"}})
   .populate({path : "comments", populate: {path : "day"}})
 
     .then(user => {
-      console.log(user)
-      res.render('user',{user})
+        user.days = user.days.map(day => {
+          day.title = day.title.substring(8,10) + "/" + day.title.substring(5,7) + "/" + day.title.substring(0,4)
+          return day
+        })
+      res.render('user', {user})
     })
     .catch(err => console.log(`Error finding user: ${err}`))
   ;
