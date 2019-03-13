@@ -58,6 +58,7 @@ router.get('/new/:dayTitle/:itemId/:type', (req, res, next) => {
         console.log("Uhhhhhh" + err)
       })
     } else {
+      console.log(req.params)
       let newUserDay = {
         title: req.params.dayTitle,
         movies: [],

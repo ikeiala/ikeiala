@@ -16,12 +16,14 @@
 
 {{#each movies}}
   {{> moviePartial this}}
+  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`movies`)">Add</button>
 {{/each}}
 
 <h1>SERIES</h1>
 
 {{#each series}}
   {{> seriesPartial this}}
+  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`series`)">Add</button>
 {{/each}}
 
 {{#each tuits}}
@@ -43,6 +45,7 @@
 
 {{#each games}}
   {{> gamePartial this}}
+  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`games`)">Add</button>
 {{/each}}
 
 <hr>
