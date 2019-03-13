@@ -10,3 +10,13 @@ a {
 img {
   width: 100px;
 }
+
+#login, #signup{
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  background-color: rgb(219, 219, 219);
+  border: 1px solid grey;
+  border-radius: 20px;
+ }

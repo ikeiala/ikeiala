@@ -14,7 +14,6 @@ router.get('/', (req, res, next) => {
 
 /* POST COMMENT */
 router.post('/comment/new/:id', (req, res, next) => {
-  console.log(req.user)
   let newcomment = {
     text: req.body.text,
     author: req.user._id,
