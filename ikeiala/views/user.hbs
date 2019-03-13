@@ -27,5 +27,7 @@
 <h2>COMENTARIOS</h2>
 {{#each user.comments}}
 <p>{{this.text}}</p>
-<p>{{this.day}}</p>
+{{#each this.day}}
+<p>{{this.title}}</p>
+{{/each}}
 {{/each}}
