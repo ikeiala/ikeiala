@@ -52,6 +52,12 @@
 
 <hr>
 <h1>COMMENTS</h1>
+<h3>List</h3>
+{{#each comments}}
+ <h5>{{this.author.username}}</h5>
+ <p>{{this.text}}</p>
+{{/each}}
+<hr>
 <form action="/comment/new/{{id}}" method="post">
 <label>Text: <textarea cols="50" name="text" placeholder="¿Qué quieres decir?"></textarea></label><br><br>
 <button type="submit">Enviar</button>
