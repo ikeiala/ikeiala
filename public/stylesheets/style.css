@@ -76,6 +76,7 @@ nav {
 
 .hero {
   width: 100%;
+  max-height: 60vh;
   display: flex;
   justify-content: space-between;
   background-color: #f7d794;
@@ -83,14 +84,15 @@ nav {
 
 .hero-text {
   align-self: center;
-  width: 70%;
+  max-width: 60%;
   padding: 50px; }
 
 .hero-img {
   top: 0;
-  width: 40%; }
+  width: 40%;
+  min-width: 300px; }
 
 .hero-img img {
-  width: 100%; }
+  max-width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
