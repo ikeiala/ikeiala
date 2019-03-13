@@ -11,23 +11,17 @@
 <h1>MOVIES</h1>
 
 {{#each movies}}
-  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
-  <h2>{{this.title}}</h2>
-  <p>{{this.overview}}</p>
-  <a href="/user/new/{{../dayTitle}}/{{id}}/movies">Add</a><br><br>
+  {{> moviePartial this}}
 {{/each}}
 
 <h1>SERIES</h1>
 
 {{#each series}}
-  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
-  <h2>{{this.name}}</h2>
-  <p>{{this.overview}}</p>
-  <a href="/user/new/{{../dayTitle}}/{{id}}/series">Add</a><br><br>
+  {{> seriesPartial this}}
 {{/each}}
 
 {{#each tuits}}
-<p><a href={{this.link}}>{{this.title}}</a></p>
+  {{> tuitPartial this}}
 {{/each}}
 
 <div>
@@ -44,21 +38,14 @@
 <h1>GAMES</h1>
 
 {{#each games}}
-  <h2>{{this.name}}</h2>
-  <p>{{this.summary}}</p>
-  {{#each this.platforms}}
-    <p>{{this}},</p>
-  {{/each}}
-  <p><a href={{this.url}}>Leer más</a></p>
-  <a href="/user/new/{{../dayTitle}}/{{id}}/games">Add</a><br><br>
+  {{> gamePartial this}}
 {{/each}}
 
 <hr>
 <h1>COMMENTS</h1>
 <h3>List</h3>
 {{#each comments}}
- <h5>{{this.author.username}}</h5>
- <p>{{this.text}}</p>
+  {{> commentPartial }}
 {{/each}}
 <hr>
 <form action="/comment/new/{{id}}" method="post">

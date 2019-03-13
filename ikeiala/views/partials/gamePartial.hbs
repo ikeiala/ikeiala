@@ -1,0 +1,7 @@
+<h2>{{this.name}}</h2>
+<p>{{this.summary}}</p>
+{{#each this.platforms}}
+  <p>{{this}},</p>
+{{/each}}
+<p><a href={{this.url}}>Leer más</a></p>
+<a href="/user/new/{{../dayTitle}}/{{id}}/games">Add</a><br><br>
