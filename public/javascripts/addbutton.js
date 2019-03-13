@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const addEvent = (dayTitle,id,type) => {
   console.log(dayTitle,id,type)
-  axios.get(`http://localhost:4000/user/new/${dayTitle}/${id}/${type}`)
+  axios.get(`${url}/user/new/${dayTitle}/${id}/${type}`)
   .then((response) => console.log(response.data.x))
   .catch(err=>console.log(err))
 }
@@ -19,7 +19,7 @@ const addEvent = (dayTitle,id,type) => {
 
 const addComment = (dayiId) => {
   console.log(comment.value,dayiId)
-  axios.post(`http://localhost:4000/comment/new/${dayiId}`,{text : comment.value})
+  axios.post(`${url}/comment/new/${dayiId}`,{text : comment.value})
   .then(response=>{
     console.log(response)
     let newh5 = document.createElement("h5")
