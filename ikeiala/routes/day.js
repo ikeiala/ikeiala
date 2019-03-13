@@ -10,8 +10,6 @@ const Tuit = require(`../models/Tuit`)
 const Wiki = require(`../models/Wiki`)
 const Game = require(`../models/Game`)
 
-
-
 const h2p = require('html2plaintext')
 
 let movies = undefined
@@ -38,7 +36,7 @@ router.post('/', (req, res, next) => {
   .populate(`tuits`)
   .populate(`wikis`)
   .populate(`games`)
-  .populate({path : 'comments', populate : {path : 'author'}}) //maravilloso que ésto sea así de sencillo
+  .populate({path : 'comments', populate : {path : 'author'}}) 
     .then(response => {
       if(response.length>0){
         console.log(response[0].comments)
