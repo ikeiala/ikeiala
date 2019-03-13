@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const addEvent = (dayTitle,id,type) => {
   console.log(dayTitle,id,type)
   axios.get(`http://localhost:4000/user/new/${dayTitle}/${id}/${type}`)
-  .then((response) => alert(response.data.x))
+  .then((response) => console.log(response.data.x))
   .catch(err=>console.log(err))
 }
 

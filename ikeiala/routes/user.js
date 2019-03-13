@@ -35,7 +35,6 @@ router.get('/:id', ensureAuthenticatedAndOwner, (req, res, next) => {
 });
 
 router.get('/new/:dayTitle/:itemId/:type', (req, res, next) => {
-  console.log(req.params)
   User.findById(req.user.id)
   .populate("days")
   .then (user => {
@@ -50,15 +49,12 @@ router.get('/new/:dayTitle/:itemId/:type', (req, res, next) => {
     if (foundUserDayId){
       UserDay.findByIdAndUpdate(foundUserDayId,{ $addToSet: { [req.params.type]: req.params.itemId }},{new:true})
       .then(userDay => {
-        console.log("Holiiiii")
-        console.log(userDay)
         res.json({x:"hola"})
       })
       .catch(err => {
-        console.log("Uhhhhhh" + err)
+        console.log("Ha habido un error" + err)
       })
     } else {
-      console.log(req.params)
       let newUserDay = {
         title: req.params.dayTitle,
         movies: [],
