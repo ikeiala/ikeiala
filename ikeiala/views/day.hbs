@@ -15,23 +15,17 @@
 <h1>MOVIES</h1>
 
 {{#each movies}}
-  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
-  <h2>{{this.title}}</h2>
-  <p>{{this.overview}}</p>
-  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`movies`)">Add</button>
+  {{> moviePartial this}}
 {{/each}}
 
 <h1>SERIES</h1>
 
 {{#each series}}
-  <img src=https://image.tmdb.org/t/p/w1280{{this.poster_path}}>
-  <h2>{{this.name}}</h2>
-  <p>{{this.overview}}</p>
-  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`series`)">Add</button>
+  {{> seriesPartial this}}
 {{/each}}
 
 {{#each tuits}}
-<p><a href={{this.link}}>{{this.title}}</a></p>
+  {{> tuitPartial this}}
 {{/each}}
 
 <div>
@@ -48,32 +42,20 @@
 <h1>GAMES</h1>
 
 {{#each games}}
-  <h2>{{this.name}}</h2>
-  <p>{{this.summary}}</p>
-  {{#each this.platforms}}
-    <p>{{this}},</p>
-  {{/each}}
-  <p><a href={{this.url}}>Leer más</a></p>
-  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`games`)">Add</button>
+  {{> gamePartial this}}
 {{/each}}
 
 <hr>
-<h1>COMMENTS</h1>
-<h3 id="commentlist">List</h3>
+<h1 id="commentlist">COMMENTS</h1>
+
 {{#each comments}}
- <h5>{{this.author.username}}</h5>
- <p>{{this.text}}</p>
+  {{> commentPartial }}
 {{/each}}
-<hr>
 
+{{#if user}}
+<hr>
+<h1>ADD A NEW COMMENT:</h1>
 <label>Text: <textarea id="textcomment" cols="50" name="text" placeholder="¿Qué quieres decir?"></textarea></label><br><br>
 <button onclick="addComment(`{{id}}`)">Enviar</button>
-
-
-
-
-
-
-
-
+{{/if}}
 
