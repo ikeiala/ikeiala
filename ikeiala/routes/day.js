@@ -40,7 +40,7 @@ router.post('/', (req, res, next) => {
     .then(response => {
       if(response.length>0){
         console.log(response[0].comments)
-        res.render('day', {movies:response[0].movies, series:response[0].series,tuits: response[0].tuits, wiki: response[0].wikis, games: response[0].games, comments: response[0].comments,id: response[0]._id})
+        res.render('day', {movies:response[0].movies, series:response[0].series,tuits: response[0].tuits, wiki: response[0].wikis, games: response[0].games, comments: response[0].comments,id: response[0]._id, dayTitle: userDay})
       } else {
         const date = new Date(year, month, day, 12, 0, 0)
         const dateBefore = new Date(date - 86400000)
@@ -232,7 +232,7 @@ router.post('/', (req, res, next) => {
   
                 Day.create(newday)
                   .then(day => {
-                    res.render('day', {movies:creations[0], series:creations[1], tuits: creations[2], wiki: creations[3], games: creations[4], id: day._id})
+                    res.render('day', {movies:creations[0], series:creations[1], tuits: creations[2], wiki: creations[3], games: creations[4], id: day._id, dayTitle: userDay})
                     console.log("day created")
                   })
                   .catch(err=>console.log(`error creating the new day`, err))
