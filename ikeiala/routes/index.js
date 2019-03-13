@@ -33,6 +33,7 @@ router.post('/comment/new/:id', (req, res, next) => {
         console.log("user updated day comment list")
       })
       .catch(err => console.log(`Error finding user: ${err}`))
+      //res.json({msg:"ok"})
     })
 
 
