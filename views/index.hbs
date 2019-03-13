@@ -1,14 +1,9 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<form action="/day" method="post">
-<label>Dime un día:
-<input type="date" name="date" placeholder="YYYY/MM/DD">
-</label>
-<button type="submit" id="send-day">Enviar</button>
-</form>
-{{#if user}}
-<p><a href="/user/{{user.id}}">My profile</a></p>
-{{/if}}
-
-
-
+<header class="hero">
+  <section class="hero-text">
+    <h1>IKEIALA</h1>
+    <h2>La agenda de las cosas que te importan</h2>
+  </section>
+  <section class="hero-img">
+    <img src="../images/tiki.png">
+  </section>
+</header>

@@ -1,0 +1,22 @@
+.hero {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: $yellow;
+  overflow-y: show;
+}
+
+.hero-text {
+  align-self: center;
+  width: 70%;
+  padding: 50px;
+}
+
+.hero-img {
+  top: 0;
+  width: 40%;
+}
+
+.hero-img img {
+  width: 100%;
+}

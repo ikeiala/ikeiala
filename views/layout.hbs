@@ -3,16 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
 
   <nav>
-    <a href="/">Home</a>
-    <a id="logbutton" href="">Login</a>
-    <a href="/auth/logout">Logout</a>
+    <div class="search">
+      <form action="/day" method="post">
+        <input type="date" name="date" placeholder="YYYY/MM/DD">
+        <button type="submit" id="send-day">Enviar</button>
+      </form>
+    </div>
+    <div class="menu">
+      <a href="/">Home</a>
+      <a id="logbutton" href="">Login</a>
+      <a href="/auth/logout">Logout</a>
+      {{#if user}}
+        <a href="/user/{{user.id}}">My profile</a>
+      {{/if}}
+    </div>
   </nav>
 
  {{{body}}}
