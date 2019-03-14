@@ -115,4 +115,58 @@ nav {
   object-fit: contain;
   height: 120%; }
 
+.usercontainer {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-flow: wrap;
+  width: 80%; }
+  .usercontainer h1 {
+    font-family: 'Indie Flower', cursive;
+    font-size: 2em;
+    color: #e49141; }
+  .usercontainer h2 {
+    font-size: 1.4em; }
+  .usercontainer h3 {
+    font-size: 1.8em; }
+  .usercontainer img {
+    width: 50px; }
+
+.agendaevent {
+  position: relative;
+  margin: 20px 0; }
+
+.agendaeventpic {
+  position: absolute;
+  transform: translateX(-80px);
+  width: 60px;
+  height: 60px;
+  border-radius: 40px; }
+
+.useragenda {
+  width: 66%;
+  padding: 50px 200px 0 50px; }
+
+.userprofile {
+  width: 34%;
+  padding: 0 100px;
+  border-left: solid 3px #778beb; }
+
+.usercontent {
+  position: relative;
+  margin: 80px 0; }
+  .usercontent h1 {
+    font-family: 'Quicksand', Arial, sans-serif;
+    font-size: 3em;
+    color: #e49141; }
+
+.userpic {
+  position: absolute;
+  top: 0;
+  transform: translateX(-160px);
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  border: 3px solid #778beb; }
+
 /*# sourceMappingURL=style.css.map */
