@@ -57,8 +57,103 @@
 
   </nav>
 
+  <div id="shadowed"> </div>
+
+
   {{{body}}}
 
+  <div class="form-container" id="login">
+
+	<div class="l-form">
+  <form action="/auth/login" method="POST" id="loginform">
+		<input class="l-usr" name="username" placeholder="USUARIO">
+		<div class="pass-wrap l-pass">
+			<input class="pass" name="password" placeholder="CONTRASEÑA" type="password">
+			<div class="pass-view">
+				<i class="far fa-eye"></i>
+			<i class="far fa-eye-slash" style="display: none;"></i>
+			</div>
+		</div>
+		<button class="l-go">ENVIAR</button>
+    </form>
+	</div>
+
+	<div class="r-form">
+  <form action="/auth/signup" method="POST" id="signupform" enctype="multipart/form-data">
+		<input class="r-1" name="username" placeholder="USUARIO">
+    {{!-- <input class="r-2" name="email" placeholder="EMAIL" type="email"> --}}
+    <input class="r-2" name="bio" placeholder="BIO">
+
+		<div class="pass-wrap r-3">
+			<input class="pass" name="password" placeholder="CONTRASEÑA" type="password">
+			<div class="pass-view">
+				<i class="far fa-eye"></i>
+			<i class="far fa-eye-slash" style="display: none;"></i>
+			</div>
+		</div>
+
+    <div class="r-4">
+      <input type="file" name="profile_pic" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
+      <label for="file">Sube una foto</label>
+    </div>
+
+		{{!-- <div class="pass-wrap r-con">
+			<input class="pass" placeholder="CONFIRMAR CONTRASEÑA" type="password">
+			<div class="pass-view">
+				<i class="far fa-eye"></i>
+			<i class="far fa-eye-slash" style="display: none;"></i>
+			</div>
+		</div> --}}
+		<button class="r-go">ENVIAR</button>
+    </form>
+    </div>
+
+
+
+	<div class="l-overlay l-inactive left">
+		<div class="tri-l tri-l1"></div>
+		<div class="tri-l tri-l2"></div>
+		<div class="tri-l tri-l3"></div>
+		<div class="tri-l tri-l4"></div>
+		<div class="tri-l tri-l5"></div>
+	</div>
+	<div class="r-overlay r-inactive right">
+		<div class="tri-r tri-r1"></div>
+		<div class="tri-r tri-r2"></div>
+		<div class="tri-r tri-r3"></div>
+		<div class="tri-r tri-r4"></div>
+		<div class="tri-r tri-r5"></div>
+	</div>
+	<small class="l-disc" style="display: none;">Already have an account?</small>
+	<small class="r-disc">Don't have an account?</small>
+	<button class="l-btn">SIGN IN</button>
+	<button class="r-btn">SIGN UP</button>
+</div>
+{{!-- 
+<div class="area" >
+	<ul class="tris">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div > --}}
+
+
+{{!-- 
+<div id="my-btn-contain"><button id="more-btn" onclick="window.open('https://codepen.io/Souleste/pen/dgeLBB' + location.search)">Custom Checkbox</button><button id="more-btn" onclick="window.open('https://codepen.io/Souleste/pen/BbZayX' + location.search)">Hide/Show Password</button>
+	<p class="profile" onclick="window.open('https://codepen.io/Souleste/' + location.search)">@Souleste</p>
+</div> --}}
+
+
+{{!-- 
+  
   <div id="login">
     <h2>Login</h2>
     <form action="/auth/login" method="POST" id="loginform">
@@ -78,8 +173,11 @@
         <a id="signupbutton" href="">Signup</a>
       </p>
     </form>
-  </div>
-  <div id="signup">
+  </div> --}}
+
+{{!-- 
+
+    <div id="signup">
     <h2>Signup</h2>
     <form action="/auth/signup" method="POST" id="signupform" enctype="multipart/form-data">
       <label for="username">Username</label>
@@ -112,7 +210,15 @@
       </p>
     </form>
   </div>
-  </div>
+  </div> --}}
+  <footer>
+    <p>Made with <i class="fas fa-heart"></i> by <a href="https://www.linkedin.com/in/danielherrerohernando/" target="_blank">Dani Herrero</a> y <a href="https://www.linkedin.com/in/gomezortiz/" target="_blank">David Gómez</a></p>
+  </footer>
+
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
   <script src="/javascripts/vanillaCalendar.js"></script>
   <script>
   window.addEventListener('load', function () {

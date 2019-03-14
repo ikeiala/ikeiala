@@ -1,0 +1,19 @@
+footer {
+  width: 100%; 
+  padding: 20px;
+  background-color: $purple;
+  color: $search-text-purple;
+}
+
+.fas {
+  color: #f78fb3;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: $yellow;
+}
