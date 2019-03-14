@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+    
   console.log('IronGenerator JS imported successfully!');
   const log = document.getElementById(`logbutton`)
   const login = document.getElementById(`login`)
@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const signup = document.getElementById(`signup`)
  
   const signup_loginbutton = document.getElementById("signup_loginbutton")
-
 
 
   log.onclick = e => {
@@ -29,3 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
  }, false);
+
+ 

@@ -17,6 +17,18 @@ nav {
   width: 20%;
 }
 
+.menu a {
+  color: $search-text-purple;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.menu a:hover {
+  color: $search-background-purple;
+}
+
 form.search-form input[type=date] {
   padding: 10px;
   font-size: 17px;
@@ -54,4 +66,11 @@ form.search-form::after {
   content: "";
   clear: both;
   display: table;
+}
+
+#v-cal {
+  width: 40% !important;
+  position: absolute;
+  top:63px;
+  left:25px;
 }
