@@ -196,7 +196,8 @@ form.search-form::after {
 
 .useragenda {
   width: 66%;
-  padding: 50px 200px 0 50px; }
+  padding: 50px 200px 0 50px;
+  z-index: -100; }
 
 .userprofile {
   width: 34%;
@@ -226,6 +227,7 @@ form.search-form::after {
   height: 120px;
   border-radius: 60px;
   border: 3px solid #778beb; }
+
 :root {
   --vcal-bg-color: #fff;
   --vcal-border-radius: 0;
