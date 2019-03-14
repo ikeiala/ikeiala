@@ -21,7 +21,6 @@ nav {
   color: $search-text-purple;
   text-transform: uppercase;
   text-decoration: none;
-  font-size: 14px;
   margin-left: 10px;
 }
 
@@ -79,4 +78,5 @@ form.search-form::after {
   position: absolute;
   top:63px;
   left:25px;
+  z-index: 100;
 }
