@@ -4,54 +4,66 @@
 
   <p>El día de hoy: {{dayTitle}}</p>
 
-  <div class="day-container">
+  <menu>
+    <li><a href="#movies">Estrenos de cine</a></li>
+    <li><a href="#series">Nuevos episodios de series</a></li>
+    <li><a href="#games">Lanzamientos en videojuegos</a></li>
 
-  {{#each movies}}
-  <article class="movie partial">{{> moviePartial this}}
-  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`movies`)"><i class="far fa-plus-square"></i> AÑADIR A FAVORITOS</button>
-  </article>
-  {{/each}}
-
-  {{#each series}}
-  <article class="serie partial">{{> seriesPartial this}}
-  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`series`)"><i class="far fa-plus-square"></i> AÑADIR A FAVORITOS</button>
-  </article>
-  {{/each}}
-
-  {{#each tuits}}
-  {{> tuitPartial this}}
-  {{/each}}
+  </menu>
 
   
-    <img src={{wiki.img}}>
-    <ul>
-      {{#each wiki.wikis}}
-      <li>{{this.year}}: {{this.description}}</li>
-      <p><a href={{this.link}}>Leer más</a></p>
+    {{#each tuits}}
+    {{> tuitPartial this}}
+    {{/each}}
+
+    
+      <img src={{wiki.img}}>
+      <ul>
+        {{#each wiki.wikis}}
+        <li>{{this.year}}: {{this.description}}</li>
+        <p><a href={{this.link}}>Leer más</a></p>
+        {{/each}}
+      </ul>
+
+  <div class="day">
+
+    <h2 class="movies"> <i class="fas fa-film movies"> </i> ESTRENOS DE CINE</h2>
+    <div class="container" id="#movies">
+      {{#each movies}}
+        <article class="movie partial">{{> moviePartial this}}
+        <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`movies`)"><i class="far fa-plus-square"></i> AÑADIR A FAVORITOS</button>
+      </article>
       {{/each}}
-    </ul>
+    </div>
 
-  </>
+        <h2 class="series"> <i class="fas fa-tv series"> </i> NUEVOS EPISODIOS DE SERIES</h2>
+    <div class="container" id="#series">
+    {{#each series}}
+    <article class="serie partial">{{> seriesPartial this}}
+    <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`series`)"><i class="far fa-plus-square"></i> AÑADIR A FAVORITOS</button>
+    </article>
+    {{/each}}
 
-  {{#each games}}
-  <article class="serie partial">{{> gamePartial this}}
-  <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`games`)"><i class="far fa-plus-square"></i> AÑADIR A FAVORITOS</button>
-  </article>
-  {{/each}}
 
-  <hr>
-  <h1 id="commentlist">COMMENTS</h1>
+    {{#each games}}
+    <article class="serie partial">{{> gamePartial this}}
+    <button onclick="addEvent(`{{../dayTitle}}`,`{{id}}`,`games`)"><i class="far fa-plus-square"></i> AÑADIR A FAVORITOS</button>
+    </article>
+    {{/each}}
 
-  {{#each comments}}
-  {{> commentPartial }}
-  {{/each}}
+    <hr>
+    <h1 id="commentlist">COMMENTS</h1>
 
-  {{#if user}}
-  <hr>
-  <h1>ADD A NEW COMMENT:</h1>
-  <label>Text: <textarea id="textcomment" cols="50" name="text"
-      placeholder="¿Qué quieres decir?"></textarea></label><br><br>
-  <button onclick="addComment(`{{id}}`)">Enviar</button>
-  {{/if}}
+    {{#each comments}}
+    {{> commentPartial }}
+    {{/each}}
+
+    {{#if user}}
+    <hr>
+    <h1>ADD A NEW COMMENT:</h1>
+    <label>Text: <textarea id="textcomment" cols="50" name="text"
+        placeholder="¿Qué quieres decir?"></textarea></label><br><br>
+    <button onclick="addComment(`{{id}}`)">Enviar</button>
+    {{/if}}
 
 </div>

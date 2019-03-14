@@ -1,22 +1,49 @@
-.day-container {
+.day {
   width: 80%;
   margin: 50px auto;
+}
+
+.container {
   display: flex;
   flex-wrap: wrap;
 }
 
-.day-container img {
+.day img {
   object-fit: cover;
   width: 100%;
   max-height: 300px;
 }
+
+.day h2 {
+  margin: 10px;
+  font-size: 1.8em;
+  border-bottom: 2px solid;
+}
+
+h2.movies {
+  border-color: #00cec9;
+}
+
+i.movies {
+  color: #00cec9;
+}
+
+h2.series {
+  border-color: #d63031;
+}
+
+
+i.series {
+  color: #d63031;
+}
+
 
 .partial {
   width: 33%;
   padding: 10px;
 }
 
-.partial h2 {
+.partial h3 {
   font-size: 1.5em;
   padding: 5px;
   text-transform: uppercase;
