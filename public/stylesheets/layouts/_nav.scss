@@ -8,3 +8,50 @@ nav {
   background-color: $purple;
   padding: 20px;
 }
+
+.search {
+  width: 40%;
+}
+
+.menu {
+  width: 20%;
+}
+
+form.search-form input[type=date] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid $purple;
+  float: left;
+  width: 80%;
+  background: $search-background-purple;
+  border-radius: 10px;
+  color: $search-text-purple;
+}
+
+form.search-form input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+
+
+form.search-form input[type="date"]::-webkit-inner-spin-button { 
+  display: none;
+}
+
+#send-day {
+  float: left;
+  width: 5%;
+  padding: 10px;
+  background: $purple;
+  color: $search-text-purple;
+  font-size: 17px;
+  border: 1px solid $purple;
+  border-radius: 50px;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search-form::after {
+  content: "";
+  clear: both;
+  display: table;
+}

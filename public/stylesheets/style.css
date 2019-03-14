@@ -78,6 +78,45 @@ nav {
   background-color: #778beb;
   padding: 20px; }
 
+.search {
+  width: 40%; }
+
+.menu {
+  width: 20%; }
+
+form.search-form input[type=date] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid #778beb;
+  float: left;
+  width: 80%;
+  background: #b1beff;
+  border-radius: 10px;
+  color: #c8d1ff; }
+
+form.search-form input[type="date"]::-webkit-clear-button {
+  display: none; }
+
+form.search-form input[type="date"]::-webkit-inner-spin-button {
+  display: none; }
+
+#send-day {
+  float: left;
+  width: 5%;
+  padding: 10px;
+  background: #778beb;
+  color: #c8d1ff;
+  font-size: 17px;
+  border: 1px solid #778beb;
+  border-radius: 50px;
+  border-left: none;
+  cursor: pointer; }
+
+form.search-form::after {
+  content: "";
+  clear: both;
+  display: table; }
+
 .hero {
   width: 100%;
   max-height: 60vh;
