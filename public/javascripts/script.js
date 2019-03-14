@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   console.log('IronGenerator JS imported successfully!');
   const log = document.getElementById(`logbutton`)
   const login = document.getElementById(`login`)
@@ -12,8 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const signup_loginbutton = document.getElementById("signup_loginbutton")
   const calendar = document.getElementById("v-cal")
 
+  calendar.style.display = "none";
+
   searchYearDateInput.onclick = () => {
-    calendar.style.display = "block";
+    if (calendar.style.display === "none"){
+      calendar.style.display = "block";
+      console.log(calendar.style.display)
+    } else {
+      calendar.style.display = "none";
+      console.log(calendar.style.display)
+    }
   }
 
   log.onclick = e => {
