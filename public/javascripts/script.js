@@ -17,10 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   searchYearDateInput.onclick = () => {
     if (calendar.style.display === "none"){
       calendar.style.display = "block";
-      console.log(calendar.style.display)
     } else {
       calendar.style.display = "none";
-      console.log(calendar.style.display)
     }
   }
 
