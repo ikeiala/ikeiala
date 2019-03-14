@@ -54,7 +54,7 @@ table {
 
 body {
   font-family: 'Quicksand', Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.25; }
 
 a {
@@ -150,7 +150,7 @@ nav {
 .userprofile {
   width: 34%;
   padding: 0 100px;
-  border-left: solid 3px #778beb; }
+  border-left: solid 30px #b1beff; }
 
 .usercontent {
   position: relative;
@@ -158,12 +158,19 @@ nav {
   .usercontent h1 {
     font-family: 'Quicksand', Arial, sans-serif;
     font-size: 3em;
-    color: #e49141; }
+    color: #778beb;
+    padding-bottom: 10px;
+    font-weight: bolder; }
+  .usercontent h2 {
+    font-size: 1.3em;
+    color: #778beb;
+    padding-top: 80px;
+    font-weight: bolder; }
 
 .userpic {
   position: absolute;
   top: 0;
-  transform: translateX(-160px);
+  transform: translateX(-175px);
   width: 120px;
   height: 120px;
   border-radius: 60px;

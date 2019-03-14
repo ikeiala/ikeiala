@@ -47,9 +47,10 @@
     <div class="userpic" style="background-image: url({{user.profile_pic}});background-size:cover"></div>
 
     <p>Email: {{user.email}}</p>
-    <p>Bio: {{user.bio}}</p>
+    <p><b style="font-weight: bolder">Bio:</b> {{user.bio}}</p>
 
-    <h2>COMENTARIOS</h2>
+    <h2>Comentarios</h2>
+    <hr>
     {{#each user.comments}}
     <p>{{this.text}}</p>
       {{#each this.day}}
