@@ -1,3 +1,4 @@
-<h3>{{this.name}}</h3>
-<p>{{this.summary}}</p>
-<p><a href={{this.url}}>Leer más</a></p>
+{{#if this.summary}}
+  <h3 class="games">{{this.name}}</h3>
+  <p>{{this.summary}} <a href={{this.url}}>Leer más</a></p>
+{{/if}}
