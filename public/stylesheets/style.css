@@ -85,7 +85,6 @@ nav {
   color: #c8d1ff;
   text-transform: uppercase;
   text-decoration: none;
-  font-size: 14px;
   margin-left: 10px; }
 
 .menu a:hover {
@@ -127,7 +126,8 @@ form.search-form::after {
   width: 40% !important;
   position: absolute;
   top: 63px;
-  left: 25px; }
+  left: 25px;
+  z-index: 100; }
 
 .hero {
   width: 100%;
@@ -170,7 +170,6 @@ form.search-form::after {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  flex-flow: wrap;
   width: 80%; }
   .usercontainer h1 {
     font-family: 'Indie Flower', cursive;
@@ -196,11 +195,11 @@ form.search-form::after {
 
 .useragenda {
   width: 66%;
-  padding: 50px 200px 0 50px;
-  z-index: -100; }
+  padding: 50px 200px 0 50px; }
 
 .userprofile {
   width: 34%;
+  height: 1000vh;
   padding: 0 100px;
   border-left: solid 30px #b1beff; }
 
