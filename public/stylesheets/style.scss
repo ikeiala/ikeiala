@@ -7,9 +7,13 @@
 
 @import "layouts/_nav";
 @import "layouts/_hero";
+@import "layouts/_day";
 @import "layouts/_userpage";
+@import "layouts/_footer";
 
 // Vendor
 
-@import "vendor/vanillaCalendar"
+@import "vendor/vanillaCalendar";
+@import "vendor/forms";
+
 

@@ -4,20 +4,10 @@
     box-sizing: border-box;
 }
 
-
-// Styles to discard:
 body {
   font-family: 'Quicksand', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.25;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
-
-#login, #signup{
-  display: none;
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  background-color: rgb(219, 219, 219);
-  border: 1px solid grey;
-  border-radius: 20px;
- }
