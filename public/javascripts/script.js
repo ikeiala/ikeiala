@@ -6,10 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
  
   const sign = document.getElementById(`signupbutton`)
   const signup = document.getElementById(`signup`)
+  const searchYearDateInput = document.getElementById(`search-year-date-input`)
+
  
   const signup_loginbutton = document.getElementById("signup_loginbutton")
+  const calendar = document.getElementById("v-cal")
 
+  calendar.style.display = "none";
 
+  searchYearDateInput.onclick = () => {
+    if (calendar.style.display === "none"){
+      calendar.style.display = "block";
+    } else {
+      calendar.style.display = "none";
+    }
+  }
 
   log.onclick = e => {
     e.preventDefault()
@@ -29,3 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
  }, false);
+
+ 

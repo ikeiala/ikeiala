@@ -8,3 +8,75 @@ nav {
   background-color: $purple;
   padding: 20px;
 }
+
+.search {
+  width: 40%;
+}
+
+.menu {
+  width: 20%;
+}
+
+.menu a {
+  color: $search-text-purple;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.menu a:hover {
+  color: $search-background-purple;
+}
+
+form.search-form input {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid $purple;
+  float: left;
+  width: 80%;
+  background: $search-background-purple;
+  border-radius: 10px;
+  color: $search-text-purple;
+}
+
+// form.search-form input[type="date"]::-webkit-clear-button {
+//   display: none;
+// }
+
+
+// form.search-form input[type="date"]::-webkit-inner-spin-button { 
+//   display: none;
+// }
+
+#send-day {
+  float: left;
+  width: 5%;
+  padding: 10px;
+  background: $purple;
+  color: $search-text-purple;
+  font-size: 17px;
+  border: 1px solid $purple;
+  border-radius: 50px;
+  border-left: none;
+  cursor: pointer;
+}
+
+#search-year-date-input::placeholder { 
+  color: $search-text-purple;
+  font-size: 17px;
+}
+
+form.search-form::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#v-cal {
+  display: none;
+  width: 40% !important;
+  position: absolute;
+  top:63px;
+  left:25px;
+}
