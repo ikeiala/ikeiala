@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700");
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -51,7 +53,9 @@ table {
   box-sizing: border-box; }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-family: 'Quicksand', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.25; }
 
 a {
   color: #00B7FF; }
@@ -85,7 +89,22 @@ nav {
 .hero-text {
   align-self: center;
   max-width: 60%;
-  padding: 50px; }
+  padding: 50px;
+  margin-left: 50px; }
+
+.hero-text h1 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 150px;
+  color: #e49141;
+  text-shadow: 0px 4px 2px #F3C25B; }
+
+.hero-text h2 {
+  font-family: 'Indie Flower', cursive;
+  margin-left: 75px;
+  font-size: 18px;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  color: #778beb; }
 
 .hero-img {
   top: 0;
@@ -93,6 +112,7 @@ nav {
   min-width: 300px; }
 
 .hero-img img {
-  max-width: 100%; }
+  object-fit: contain;
+  height: 120%; }
 
 /*# sourceMappingURL=style.css.map */

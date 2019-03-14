@@ -11,6 +11,23 @@
   align-self: center;
   max-width: 60%;
   padding: 50px;
+  margin-left: 50px;
+}
+
+.hero-text h1 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 150px;
+  color: $orange;
+  text-shadow: 0px 4px 2px #F3C25B;
+}
+
+.hero-text h2 {
+  font-family: 'Indie Flower', cursive;
+  margin-left: 75px;
+  font-size: 18px;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  color: $purple;
 }
 
 .hero-img {
@@ -20,5 +37,6 @@
 }
 
 .hero-img img {
-  max-width: 100%;
+  object-fit: contain;
+  height: 120%;
 }
