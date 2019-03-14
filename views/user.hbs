@@ -2,39 +2,44 @@
   <section class="useragenda">
   {{#if user.days.[0]}}
     {{#each user.days}}
-      <h1>Agenda del día {{this.title}}</h1>
+      <h1>Agenda del día <span style="font-weight: bolder">{{this.title}}</span></h1>
+      <hr class="orangeline">
       {{#if movies.[0]}}
-      <h2>Estrenos de cine:</h2>
+      <div>
+        <h2 class="eventtitles">Estrenos de cine:</h2>
         {{#each movies}}
-          <div class="agendaevent">
+          <div class="agendaevent usermovies">
             <div class="agendaeventpic" style="background-image: url(https://image.tmdb.org/t/p/w1280{{this.poster_path}});background-size:cover"></div>
-            <h3>{{this.title}}</h2>
-            <p>{{this.overview}}</p>
+            <h3 class="movietitle">{{this.title}}</h3>
+            <p class="agendadescription">{{this.overview}}</p>
           </div>
         {{/each}}
+      </div>
       {{/if}}
       {{#if series.[0]}}
-      <h2>Nuevos episodios en series:</h2>
+      <div>
+        <h2 class="eventtitles">Nuevos episodios en series:</h2>
         {{#each series}}
-          <div class="agendaevent">
+          <div class="agendaevent userseries">
             <div class="agendaeventpic" style="background-image: url(https://image.tmdb.org/t/p/w1280{{this.poster_path}});background-size:cover"></div>
-            <h3>{{this.name}}</h2>
-            <p>{{this.overview}}</p>
+            <h3 class="serietitle">{{this.name}}</h3>
+            <p class="agendadescription">{{this.overview}}</p>
           </div>
         {{/each}}
+      </div>
       {{/if}}
       {{#if games.[0]}}
-      <h2>Lanzamientos en videojuegos:</h2>
+      <div>
+        <h2 class="eventtitles">Lanzamientos en videojuegos:</h2>
         {{#each games}}
-          <div class="agendaevent">
+          <div class="agendaevent usergames">
             <div class="agendaeventpic" style="background-image: url(https://i.blogs.es/15b7b8/110910_playstation-logo/450_1000.jpg);background-size:cover"></div>
-            <h3>{{this.name}}</h2>
-            <p>{{this.summary}}</p>
-            <p><a href={{this.url}}>Leer más</a></p>
+            <h3 class="movietitle">{{this.name}}</h3>
+            <p class="agendadescription">{{this.summary}} <a class="usergamebut" href={{this.url}}>Leer más</a></p>
           </div>
         {{/each}}
+      </div>
       {{/if}}
-      <hr>
     {{/each}}
   {{else}}
     <h2>No has añadido ningún evento todavía</h2>
@@ -43,20 +48,20 @@
 
   <section class="userprofile">
     <div class="usercontent">
-    <h1 class="username">{{user.username}}!</h1>
-    <div class="userpic" style="background-image: url({{user.profile_pic}});background-size:cover"></div>
+      <h1 class="username">{{user.username}}!</h1>
+      <div class="userpic" style="background-image: url({{user.profile_pic}});background-size:cover"></div>
 
-    <p>Email: {{user.email}}</p>
-    <p><b style="font-weight: bolder">Bio:</b> {{user.bio}}</p>
+      <p>Email: {{user.email}}</p>
+      <p><b style="font-weight: bolder">Bio:</b> {{user.bio}}</p>
 
-    <h2>Comentarios</h2>
-    <hr>
-    {{#each user.comments}}
-    <p>{{this.text}}</p>
-      {{#each this.day}}
-      <p>{{this.title}}</p>
+      <h2>Comentarios</h2>
+      <hr>
+      {{#each user.comments}}
+      <div class="usercomment">
+        <p><span class="commentdate">{{this.day.[0].title}}</span></p>
+        <p>{{this.text}}</p>
+      </div>
       {{/each}}
-    {{/each}}
     </div>
 
   </section>

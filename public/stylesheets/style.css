@@ -170,21 +170,34 @@ form.search-form::after {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  width: 80%; }
+  width: 80%;
+  margin-bottom: 100px; }
   .usercontainer h1 {
     font-family: 'Indie Flower', cursive;
     font-size: 2em;
-    color: #e49141; }
+    color: #778beb;
+    margin-top: 60px; }
   .usercontainer h2 {
-    font-size: 1.4em; }
+    font-size: 1em;
+    color: #778beb;
+    font-weight: bolder; }
   .usercontainer h3 {
-    font-size: 1.8em; }
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: #1e1e1e; }
   .usercontainer img {
     width: 50px; }
 
 .agendaevent {
   position: relative;
-  margin: 20px 0; }
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all .2s ease-in;
+  padding: .7rem; }
+  .agendaevent:hover {
+    transform: translateY(-2px); }
 
 .agendaeventpic {
   position: absolute;
@@ -195,13 +208,12 @@ form.search-form::after {
 
 .useragenda {
   width: 66%;
-  padding: 50px 200px 0 50px; }
+  padding: 20px 200px 0 50px;
+  border-right: solid 30px #b1beff; }
 
 .userprofile {
   width: 34%;
-  height: 1000vh;
-  padding: 0 100px;
-  border-left: solid 30px #b1beff; }
+  padding: 0 100px; }
 
 .usercontent {
   position: relative;
@@ -217,15 +229,66 @@ form.search-form::after {
     color: #778beb;
     padding-top: 80px;
     font-weight: bolder; }
+  .usercontent .commentdate {
+    font-size: .8em;
+    color: #e49141;
+    text-decoration: none; }
+
+.usercomment {
+  margin-top: 10px;
+  padding: 10px; }
 
 .userpic {
   position: absolute;
   top: 0;
-  transform: translateX(-175px);
-  width: 120px;
-  height: 120px;
-  border-radius: 60px;
-  border: 3px solid #778beb; }
+  transform: translateX(-185px);
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
+  border: 8px solid #b1beff; }
+
+.agendadescription {
+  max-height: 1.2em;
+  overflow: hidden;
+  transition: all 1s ease; }
+
+.agendadescription:hover {
+  max-height: 300px; }
+
+.orangeline {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1); }
+
+.usergamebut {
+  display: inline-block;
+  margin-top: 5px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #e49141;
+  border-radius: 2px;
+  padding: 2px;
+  color: white; }
+
+.eventtitles {
+  margin-top: 30px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5) !important;
+  font-weight: 100 !important; }
+
+.movietitle {
+  color: #e49141 !important; }
+
+.serietitle {
+  color: #778beb !important; }
+
+.usermovies {
+  background-color: rgba(250, 231, 190, 0.3); }
+
+.userseries {
+  background-color: rgba(189, 177, 255, 0.193); }
+
+.usergames {
+  background-color: rgba(252, 184, 157, 0.127); }
 
 :root {
   --vcal-bg-color: #fff;
