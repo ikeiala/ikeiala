@@ -91,7 +91,7 @@ nav {
 .menu a:hover {
   color: #b1beff; }
 
-form.search-form input[type=date] {
+form.search-form input {
   padding: 10px;
   font-size: 17px;
   border: 1px solid #778beb;
@@ -100,12 +100,6 @@ form.search-form input[type=date] {
   background: #b1beff;
   border-radius: 10px;
   color: #c8d1ff; }
-
-form.search-form input[type="date"]::-webkit-clear-button {
-  display: none; }
-
-form.search-form input[type="date"]::-webkit-inner-spin-button {
-  display: none; }
 
 #send-day {
   float: left;
@@ -119,12 +113,17 @@ form.search-form input[type="date"]::-webkit-inner-spin-button {
   border-left: none;
   cursor: pointer; }
 
+#search-year-date-input::placeholder {
+  color: #c8d1ff;
+  font-size: 17px; }
+
 form.search-form::after {
   content: "";
   clear: both;
   display: table; }
 
 #v-cal {
+  display: none;
   width: 40% !important;
   position: absolute;
   top: 63px;
@@ -170,10 +169,10 @@ form.search-form::after {
 :root {
   --vcal-bg-color: #fff;
   --vcal-border-radius: 0;
-  --vcal-border-color: #e7e9ed;
+  --vcal-border-color: #c8d1ff;
   --vcal-today-bg-color: #778beb;
   --vcal-today-color: #fff;
-  --vcal-selected-bg-color: #E7E9ED;
+  --vcal-selected-bg-color: #c8d1ff;
   --vcal-selected-color: #333; }
 
 #v-cal *, #v-cal *:before, #v-cal *:after {
@@ -254,12 +253,12 @@ form.search-form::after {
   cursor: pointer; }
 
 #v-cal .vcal-date--today {
-  background-color: var(--vcal-today-bg-color);
-  color: var(--vcal-today-color); }
+  background-color: #fff;
+  color: #333; }
 
 #v-cal .vcal-date--selected {
-  background-color: var(--vcal-selected-bg-color);
-  color: var(--vcal-selected-color); }
+  background-color: var(--vcal-today-bg-color);
+  color: var(--vcal-today-color); }
 
 #v-cal .vcal-date--disabled {
   border-radius: 0;

@@ -1,10 +1,10 @@
 :root {
   --vcal-bg-color: #fff;
   --vcal-border-radius: 0;
-  --vcal-border-color: #e7e9ed;
+  --vcal-border-color: #c8d1ff;
   --vcal-today-bg-color: #778beb;
   --vcal-today-color: #fff;
-  --vcal-selected-bg-color: #E7E9ED;
+  --vcal-selected-bg-color: #c8d1ff;
   --vcal-selected-color: #333;
 }
 
@@ -98,13 +98,13 @@
 }
 
 #v-cal .vcal-date--today {
-  background-color: var(--vcal-today-bg-color);
-  color: var(--vcal-today-color);
+  background-color: #fff;
+  color: #333;
 }
 
 #v-cal .vcal-date--selected {
-  background-color: var(--vcal-selected-bg-color);
-  color: var(--vcal-selected-color);
+  background-color: var(--vcal-today-bg-color);
+  color: var(--vcal-today-color);
 }
 
 #v-cal .vcal-date--disabled {

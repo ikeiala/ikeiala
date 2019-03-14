@@ -1,3 +1,4 @@
+
 var vanillaCalendar = {
   month: document.querySelectorAll('[data-calendar-area="month"]')[0],
   next: document.querySelectorAll('[data-calendar-toggle="next"]')[0],
@@ -69,12 +70,61 @@ var vanillaCalendar = {
     )
     for (var i = 0; i < this.activeDates.length; i++) {
       this.activeDates[i].addEventListener('click', function (event) {
+        var picked = document.querySelector("#search-year-date-input")
         // var picked = document.querySelectorAll(
         //   '[data-calendar-label="picked"]'
         // )[0]
-        var picked = document.querySelector("#search-year-date-input")
-        picked.value = this.dataset.calendarDate
-        this.removeActiveClass()
+
+        var uglyDate = this.dataset.calendarDate
+
+        var uglyDay = uglyDate.substring(8,10)
+        var uglyMonth = uglyDate.substring(4,7)
+        var uglyYear = uglyDate.substring(11,15)
+
+          switch(uglyMonth){
+            case "Jan":
+            uglyMonth = "01"
+            break;
+            case "Feb":
+            uglyMonth = "02"
+            break;
+            case "Mar":
+            uglyMonth = "03"
+            break;
+            case "Apr":
+            uglyMonth = "04"
+            break;
+            case "May":
+            uglyMonth = "05"
+            break;
+            case "Jun":
+            uglyMonth = "06"
+            break;
+            case "Jul":
+            uglyMonth = "07"
+            break;
+            case "Aug":
+            uglyMonth = "08"
+            break;
+            case "Sep":
+            uglyMonth = "09"
+            break;
+            case "Oct":
+            uglyMonth = "10"
+            break;
+            case "Nov":
+            uglyMonth = "11"
+            break;
+            case "Dec":
+            uglyMonth = "12"
+            break;
+          }
+
+        dateToReturn = `${uglyYear}-${uglyMonth}-${uglyDay}`
+
+        picked.value = dateToReturn
+        // picked.value = this.dataset.calendarDate
+        _this.removeActiveClass()
         this.classList.add('vcal-date--selected')
       })
     }

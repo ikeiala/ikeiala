@@ -15,7 +15,7 @@
   <nav>
     <div class="search">
       <form action="/day" method="post" class="search-form">
-        <input type="date" name="date" id="search-year-date-input" value="" placeholder="YYYY/MM/DD">
+        <input type="text" name="date" id="search-year-date-input" value="" placeholder="AAAA/MM/DD" autocomplete="off">
         <button type="submit" id="send-day"><i class="fa fa-search"></i></button>
       </form>
    <div id="v-cal">
@@ -117,7 +117,7 @@
   <script>
   window.addEventListener('load', function () {
     vanillaCalendar.init({
-				disablePastDays: true
+				disablePastDays: false
 			});
   })
 </script>

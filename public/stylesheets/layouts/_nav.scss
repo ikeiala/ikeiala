@@ -29,7 +29,7 @@ nav {
   color: $search-background-purple;
 }
 
-form.search-form input[type=date] {
+form.search-form input {
   padding: 10px;
   font-size: 17px;
   border: 1px solid $purple;
@@ -40,14 +40,14 @@ form.search-form input[type=date] {
   color: $search-text-purple;
 }
 
-form.search-form input[type="date"]::-webkit-clear-button {
-  display: none;
-}
+// form.search-form input[type="date"]::-webkit-clear-button {
+//   display: none;
+// }
 
 
-form.search-form input[type="date"]::-webkit-inner-spin-button { 
-  display: none;
-}
+// form.search-form input[type="date"]::-webkit-inner-spin-button { 
+//   display: none;
+// }
 
 #send-day {
   float: left;
@@ -62,6 +62,11 @@ form.search-form input[type="date"]::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
+#search-year-date-input::placeholder { 
+  color: $search-text-purple;
+  font-size: 17px;
+}
+
 form.search-form::after {
   content: "";
   clear: both;
@@ -69,6 +74,7 @@ form.search-form::after {
 }
 
 #v-cal {
+  display: none;
   width: 40% !important;
   position: absolute;
   top:63px;
