@@ -1,3 +1,40 @@
+.day-hero {
+  width: 100%;
+  background-color: $yellow;
+  margin-bottom: 10px;
+}
+
+.day-hero-text h1 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 3em;
+  color: $orange;
+  text-shadow: 0px 4px 2px #F3C25B;
+  display:inline-block;
+  margin-top: 10px;
+  margin: 15px 0px 10px 20px;
+}
+
+.day-hero-text h2 {
+  font-family: 'Indie Flower', cursive;
+  margin-left: 25px;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  color: $purple;
+  font-size: 1.5em;
+  display:inline-block;
+}
+
+.sections ul {
+  display:flex;
+  list-style-type: none;
+}
+
+.sections a {
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 0.85em;
+}
+
 .day {
   width: 80%;
   margin: 50px auto;
@@ -130,16 +167,74 @@ i.games {
   padding: 2px 8px; 
 }
 
-.container-wiki {
+.main-boxes {
+  display:flex;
+  margin-bottom: 20px;
+}
+
+.main-boxes h2 {
+  font-size: 1.6em;
+}
+
+.container-tuits {
+  width: 35%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  background-color: #dff9fb;
+  border: 1px solid #dff9fb;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+}
+
+.container-tuits ul {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 0;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.container-tuits li {
+  text-align: center;
+  width: 50%;
+}
+
+.container-tuits li a {
+  font-size: 0.9em;
+  text-decoration: none;
+  color: $purple;
+}
+
+.container-tuits li a:hover {
+  color: $search-background-purple;
+}
+
+.container-tuits p {
+  margin: 20px 0;
+}
+
+h2.tuits {
+  border-color: #30336b;
+  width: 100%;
+}
+
+i.tuits {
+  color: #30336b;
+}
+
+.container-wiki {
+  width: 65%;
+  display: flex;
   background-color: #dfe6e9;
   border: 1px solid #dfe6e9;
   border-radius: 10px;
   margin-bottom: 20px;
+  margin-right: 10px;
   box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
 }
-
 
 .container-wiki h2 {
   width: 80%;
@@ -163,7 +258,7 @@ i.games {
 
 .container-wiki strong {
   font-weight: 700;
-  color: $purple;
+  color: #3c6382;
 }
 
 .container-wiki a {
@@ -171,16 +266,22 @@ i.games {
   font-size: 0.7em;
   text-decoration: none;
   color: white;
-  background-color: $orange;
+  background-color: $purple;
   padding: 2px 8px; 
 }
 
-// <div class="container" id="#wiki">
-//       <img src={{wiki.img}}>
-//         <ul>
-//           {{#each wiki.wikis}}
-//           <li>{{this.year}}: {{this.description}}</li>
-//           <p><a href={{this.link}}>Leer más</a></p>
-//           {{/each}}
-//         </ul>
-//     </div>
+h2.wiki {
+  border-color: #3c6382;
+}
+
+i.wiki {
+  color: #3c6382;
+}
+
+.fa-check-circle {
+  color: #00b894;
+}
+
+.add {
+  max-width: 250px;
+}

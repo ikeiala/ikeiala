@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const signup = document.getElementById(`signup`)
   const searchYearDateInput = document.getElementById(`search-year-date-input`)
 
+	const addButtons = document.querySelectorAll(".add")
  
   const signup_loginbutton = document.getElementById("signup_loginbutton")
   const calendar = document.getElementById("v-cal")
@@ -21,8 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       calendar.style.display = "none";
     }
-  }
-
+	}
+	
+	for (let i = 0; i < addButtons.length; i++){
+		addButtons[i].onclick = () => {
+			let ok = document.createElement("i")
+			ok.setAttribute("class", "fas fa-check-circle")
+			addButtons[i].appendChild(ok)
+			setTimeout (() => {
+				ok.remove()
+			},400)
+		}
+	}
+	
   log.onclick = e => {
     e.preventDefault()
     login.style.display = "block"

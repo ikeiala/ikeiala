@@ -66,7 +66,9 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: #778beb;
-  padding: 20px; }
+  padding: 20px;
+  position: fixed;
+  z-index: 400; }
 
 .search {
   width: 40%; }
@@ -121,6 +123,9 @@ form.search-form::after {
   top: 63px;
   left: 25px;
   z-index: 100; }
+
+.fix {
+  height: 80px; }
 
 .hero {
   width: 100%;
@@ -195,6 +200,38 @@ form.search-form::after {
 
 .home-description:hover {
   max-height: 300px; }
+
+.day-hero {
+  width: 100%;
+  background-color: #f7d794;
+  margin-bottom: 10px; }
+
+.day-hero-text h1 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 3em;
+  color: #e49141;
+  text-shadow: 0px 4px 2px #F3C25B;
+  display: inline-block;
+  margin-top: 10px;
+  margin: 15px 0px 10px 20px; }
+
+.day-hero-text h2 {
+  font-family: 'Indie Flower', cursive;
+  margin-left: 25px;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  color: #778beb;
+  font-size: 1.5em;
+  display: inline-block; }
+
+.sections ul {
+  display: flex;
+  list-style-type: none; }
+
+.sections a {
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 0.85em; }
 
 .day {
   width: 80%;
@@ -302,13 +339,62 @@ i.games {
   background-color: #e49141;
   padding: 2px 8px; }
 
-.container-wiki {
+.main-boxes {
   display: flex;
-  flex-direction: row;
+  margin-bottom: 20px; }
+
+.main-boxes h2 {
+  font-size: 1.6em; }
+
+.container-tuits {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  background-color: #dff9fb;
+  border: 1px solid #dff9fb;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); }
+
+.container-tuits ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 0;
+  margin: 0 auto;
+  width: 80%; }
+
+.container-tuits li {
+  text-align: center;
+  width: 50%; }
+
+.container-tuits li a {
+  font-size: 0.9em;
+  text-decoration: none;
+  color: #778beb; }
+
+.container-tuits li a:hover {
+  color: #b1beff; }
+
+.container-tuits p {
+  margin: 20px 0; }
+
+h2.tuits {
+  border-color: #30336b;
+  width: 100%; }
+
+i.tuits {
+  color: #30336b; }
+
+.container-wiki {
+  width: 65%;
+  display: flex;
   background-color: #dfe6e9;
   border: 1px solid #dfe6e9;
   border-radius: 10px;
   margin-bottom: 20px;
+  margin-right: 10px;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); }
 
 .container-wiki h2 {
@@ -329,22 +415,35 @@ i.games {
 
 .container-wiki strong {
   font-weight: 700;
-  color: #778beb; }
+  color: #3c6382; }
 
 .container-wiki a {
   margin-left: 10px;
   font-size: 0.7em;
   text-decoration: none;
   color: white;
-  background-color: #e49141;
+  background-color: #778beb;
   padding: 2px 8px; }
+
+h2.wiki {
+  border-color: #3c6382; }
+
+i.wiki {
+  color: #3c6382; }
+
+.fa-check-circle {
+  color: #00b894; }
+
+.add {
+  max-width: 250px; }
 
 .usercontainer {
   margin-left: auto;
   margin-right: auto;
   display: flex;
   width: 80%;
-  margin-bottom: 100px; }
+  margin-bottom: 100px;
+  z-index: 100; }
   .usercontainer h1 {
     font-family: 'Indie Flower', cursive;
     font-size: 2em;
@@ -361,7 +460,14 @@ i.games {
   .usercontainer img {
     width: 50px; }
 
+.useragenda {
+  width: 66%;
+  padding: 20px 200px 0 50px;
+  border-right: solid 30px #b1beff;
+  z-index: 200; }
+
 .agendaevent {
+  z-index: 300;
   position: relative;
   margin: 10px 0;
   border-radius: 5px;
@@ -378,11 +484,6 @@ i.games {
   width: 60px;
   height: 60px;
   border-radius: 40px; }
-
-.useragenda {
-  width: 66%;
-  padding: 20px 200px 0 50px;
-  border-right: solid 30px #b1beff; }
 
 .userprofile {
   width: 34%;
@@ -418,7 +519,8 @@ i.games {
   width: 140px;
   height: 140px;
   border-radius: 70px;
-  border: 8px solid #b1beff; }
+  border: 8px solid #b1beff;
+  z-index: 200; }
 
 .agendadescription {
   max-height: 1.2em;
@@ -580,10 +682,13 @@ footer a:hover {
 
 #shadowed {
   display: none;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(255, 255, 255, 0.6);
+  height: 350vh;
+  width: 350vw;
+  background-color: rgba(255, 255, 255, 0.8);
   position: absolute; }
+
+.form-container input::placeholder {
+  color: white; }
 
 .form-container {
   display: none;
@@ -793,7 +898,7 @@ button:hover {
   top: 120px;
   right: -150px;
   width: 200px !important;
-  background-color: none; }
+  margin-top: 3px !important; }
 
 .inputfile {
   opacity: 0;
@@ -802,17 +907,16 @@ button:hover {
   z-index: -1000; }
 
 .inputfile + label {
+  height: 30px;
+  font: 400 13.3333px Arial;
   border: 3px solid #f7d794;
-  padding: 2px 20px 2px 10px;
+  background-color: transparent;
+  padding: 4px 20px 4px 10px;
   border-radius: 50px;
-  color: rgba(255, 255, 255, 0.4);
+  color: white;
   box-shadow: 2px 5px #222;
   text-transform: uppercase;
-  font-size: .9rem; }
-
-.inputfile + label {
-  cursor: pointer;
-  /* "hand" cursor */ }
+  margin-bottom: 5px; }
 
 .inputfile:focus + label {
   outline: 1px dotted #000;
@@ -869,6 +973,14 @@ button:hover {
   position: absolute;
   right: 5px;
   bottom: 0; }
+
+.camera-view {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 7px;
+  bottom: 4px; }
 
 .pass-wrap i {
   color: #f7d794;

@@ -12,6 +12,7 @@
 
 <body>
   <script>window.url = {{{ url }}}</script>
+
   <nav>
     <div class="search">
       <form action="/day" method="post" class="search-form">
@@ -92,18 +93,14 @@
 			</div>
 		</div>
 
-    <div class="r-4">
+    <div class="pass-wrap r-4">
       <input type="file" name="profile_pic" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
       <label for="file">Sube una foto</label>
+      <div class="camera-view">
+        <i class="fas fa-camera"></i>
+      </div>
     </div>
 
-		{{!-- <div class="pass-wrap r-con">
-			<input class="pass" placeholder="CONFIRMAR CONTRASEÑA" type="password">
-			<div class="pass-view">
-				<i class="far fa-eye"></i>
-			<i class="far fa-eye-slash" style="display: none;"></i>
-			</div>
-		</div> --}}
 		<button class="r-go">ENVIAR</button>
     </form>
     </div>
@@ -129,89 +126,6 @@
 	<button class="l-btn">SIGN IN</button>
 	<button class="r-btn">SIGN UP</button>
 </div>
-{{!-- 
-<div class="area" >
-	<ul class="tris">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-</div > --}}
-
-
-{{!-- 
-<div id="my-btn-contain"><button id="more-btn" onclick="window.open('https://codepen.io/Souleste/pen/dgeLBB' + location.search)">Custom Checkbox</button><button id="more-btn" onclick="window.open('https://codepen.io/Souleste/pen/BbZayX' + location.search)">Hide/Show Password</button>
-	<p class="profile" onclick="window.open('https://codepen.io/Souleste/' + location.search)">@Souleste</p>
-</div> --}}
-
-
-{{!-- 
-  
-  <div id="login">
-    <h2>Login</h2>
-    <form action="/auth/login" method="POST" id="loginform">
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="JonSnow">
-      <br><br>
-      <label for="password">Password</label>
-      <input type="password" name="password" placeholder="Your password">
-      <br>
-      {{#if message }}
-      <div class="error-message">{{ message }}</div>
-      {{/if}}
-      <br><br>
-      <button>Login</button>
-      <p class="account-message">
-        Don't have an account yet?
-        <a id="signupbutton" href="">Signup</a>
-      </p>
-    </form>
-  </div> --}}
-
-{{!-- 
-
-    <div id="signup">
-    <h2>Signup</h2>
-    <form action="/auth/signup" method="POST" id="signupform" enctype="multipart/form-data">
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="Your name">
-      <br><br>
-      <label for="password">Password</label>
-      <input type="password" name="password" placeholder="Your password">
-
-      <br><br>
-      <label for="email">Email</label>
-      <input type="email" name="email" placeholder="Your email">
-
-      <br><br>
-      <label for="bio">Bio</label>
-      <textarea cols="50" name="bio" placeholder="Your bio"></textarea>
-
-      <br><br>
-      <label for="profile_pic">Foto de perfil</label>
-      <input type="file" name="profile_pic">
-
-      <br>
-      {{#if message }}
-      <div class="error-message">{{ message }}</div>
-      {{/if}}
-      <br><br>
-      <button>Create account</button>
-      <p class="account-message">
-        Do you already have an account?
-        <a id="signup_loginbutton" href="">Login</a>
-      </p>
-    </form>
-  </div>
-  </div> --}}
-
   
   <footer>
     <p>Made with <i class="fas fa-heart"></i> by <a href="https://www.linkedin.com/in/danielherrerohernando/" target="_blank">Dani Herrero</a> y <a href="https://www.linkedin.com/in/gomezortiz/" target="_blank">David Gómez</a></p>

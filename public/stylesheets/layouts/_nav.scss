@@ -7,6 +7,8 @@ nav {
   align-items: center;
   background-color: $purple;
   padding: 20px;
+  position: fixed;
+  z-index: 400;
 }
 
 .search {
@@ -70,4 +72,8 @@ form.search-form::after {
   top:63px;
   left:25px;
   z-index: 100;
+}
+
+.fix {
+  height: 80px;
 }

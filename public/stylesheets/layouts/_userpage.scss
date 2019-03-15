@@ -4,6 +4,8 @@
   display: flex;
   width: 80%;
   margin-bottom: 100px;
+  z-index: 100;
+
 
   h1{
     font-family: 'Indie Flower', cursive;
@@ -29,7 +31,15 @@
   }
 }
 
+.useragenda{
+  width: 66%;
+  padding: 20px 200px 0 50px;
+  border-right: solid 30px $search-background-purple;
+  z-index: 200;
+}
+
 .agendaevent{
+  z-index: 300;
   position: relative;
   margin: 10px 0;
   border-radius: 5px;
@@ -51,12 +61,6 @@
   height: 60px;
   border-radius: 40px;
 
-}
-
-.useragenda{
-  width: 66%;
-  padding: 20px 200px 0 50px;
-  border-right: solid 30px $search-background-purple;
 }
 
 .userprofile{
@@ -107,6 +111,7 @@
   height: 140px;
   border-radius: 70px;
   border: 8px solid $search-background-purple;
+  z-index: 200;
 }
 
 .agendadescription{
