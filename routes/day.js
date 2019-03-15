@@ -201,7 +201,7 @@ router.post('/', (req, res, next) => {
           return game.summary.length > 10
         })
 
-        games.splice(4,games.length - 5)
+        games = games.splice(0,5)
 
         console.log(games)
         return games
