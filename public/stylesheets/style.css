@@ -402,7 +402,7 @@ i.tuits {
   margin-bottom: 20px; }
 
 .container-wiki img {
-  width: 300px;
+  max-width: 300px;
   margin: 20px;
   border-radius: 20px; }
 
@@ -1174,5 +1174,52 @@ button:hover {
 
 ::-moz-selection {
   background: #e49141; }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .menu {
+    width: 30%; }
+  .main-boxes {
+    flex-direction: column; }
+  .container-wiki {
+    width: 100%;
+    flex-direction: column; }
+  .container-tuits {
+    width: 100%;
+    margin-left: 0px; }
+  .container-wiki ul {
+    width: 100%;
+    padding: 0 20px; }
+  .partial {
+    width: 50%; }
+  .partial-game {
+    width: 100%; } }
+
+@media only screen and (max-device-width: 768px) {
+  .day {
+    width: 80%;
+    margin: 0 auto; }
+  #textcomment {
+    max-width: 200px; }
+  .sections {
+    display: none; }
+  .menu {
+    width: 40%; }
+  .main-boxes {
+    flex-direction: column; }
+  .container-wiki {
+    width: 100%;
+    flex-direction: column; }
+  .container-tuits {
+    width: 100%;
+    margin-left: 0px; }
+  .container-wiki img {
+    max-width: 200px; }
+  .container-wiki ul {
+    width: 100%;
+    padding: 0 20px; }
+  .container {
+    flex-direction: column; }
+  .partial {
+    width: 100%; } }
 
 /*# sourceMappingURL=style.css.map */
