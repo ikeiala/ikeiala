@@ -8,6 +8,16 @@
   flex-wrap: wrap;
 }
 
+.container-row {
+  display: flex;
+  flex-direction: column; 
+  flex-wrap: wrap;
+}
+
+.container, .container-row {
+  margin-bottom: 20px;
+}
+
 .day img {
   object-fit: cover;
   width: 100%;
@@ -22,6 +32,11 @@
 
 h2.movies {
   border-color: #00cec9;
+  width: 100%;
+}
+
+h3.movies {
+  color: #00cec9;
 }
 
 i.movies {
@@ -30,17 +45,37 @@ i.movies {
 
 h2.series {
   border-color: #d63031;
+  width: 100%;
 }
 
+h3.series {
+  color: #d63031;
+}
 
 i.series {
   color: #d63031;
 }
 
+h2.games {
+  width: 100%;
+  border-color: #0984e3;
+}
+
+h3.games {
+  color: #0984e3;
+}
+
+i.games {
+  color: #0984e3;
+}
 
 .partial {
   width: 33%;
   padding: 10px;
+}
+
+.partial-game {
+  width: 100%; 
 }
 
 .partial h3 {
@@ -48,7 +83,6 @@ i.series {
   padding: 5px;
   text-transform: uppercase;
   font-weight: 700;
-  color: $purple;
 }
 
 .partial p {
@@ -88,6 +122,102 @@ i.series {
   color: $orange;
 }
 
-// .movies .partial {
-  
-// }
+.partial a {
+  font-size: 0.7em;
+  text-decoration: none;
+  color: white;
+  background-color: $orange;
+  padding: 2px 8px; 
+}
+
+.container-wiki {
+  display: flex;
+  flex-direction: row;
+  background-color: #dfe6e9;
+  border: 1px solid #dfe6e9;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+}
+
+
+.container-wiki h2 {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.container-wiki img {
+  width: 300px ;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.container-wiki ul {
+  margin: 20px 0;
+}
+
+.container-wiki li {
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.container-wiki strong {
+  font-weight: 700;
+  color: $purple;
+}
+
+.container-wiki a {
+  margin-left: 10px;
+  font-size: 0.7em;
+  text-decoration: none;
+  color: white;
+  background-color: $orange;
+  padding: 2px 8px; 
+}
+
+// <div class="container" id="#wiki">
+//       <img src={{wiki.img}}>
+//         <ul>
+//           {{#each wiki.wikis}}
+//           <li>{{this.year}}: {{this.description}}</li>
+//           <p><a href={{this.link}}>Leer más</a></p>
+//           {{/each}}
+//         </ul>
+//     </div>
+
+.commentlist{
+  color: $purple;
+  margin-top: 70px;
+  margin-left: 90px;
+  font-weight: 700;
+}
+
+.addcommentlist{
+  color: $purple;
+  margin-top: 40px;
+  margin-left: 90px;
+  font-weight: 700;
+}
+
+#textcomment{
+  margin-left: 82px;
+  width: 50%;
+  border-radius: 4px;
+  border: 1px solid rgb(173, 173, 173);
+}
+
+#textcomment:hover{
+  border: 2px solid $purple;
+}
+
+.addcommentbut{
+  width: 120px;
+  height: 30px;
+  background-color: $purple;
+  border-radius: 7px;
+  color:$search-text-purple;
+  border: none;
+  margin-left: 82px;
+  margin-top: 5px;
+
+}

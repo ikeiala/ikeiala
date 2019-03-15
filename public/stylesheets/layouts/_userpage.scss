@@ -132,13 +132,13 @@
 
 .usergamebut{
   display: inline-block;
-  margin-top: 5px;
+  font-size: .8em;
   text-align: center;
   text-decoration: none;
   background-color: $orange;
   border-radius: 2px;
-  padding: 2px;
   color: white;
+  padding: 0 5px;
 }
 
 .eventtitles{

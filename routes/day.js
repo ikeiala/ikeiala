@@ -196,7 +196,13 @@ router.post('/', (req, res, next) => {
     data: `fields name,platforms,summary,url,release_dates.date; where release_dates.date > ${dateBefore.getTime() / 1000 + 20000} & release_dates.date < ${dateAfter.getTime() / 1000};`
   })
     .then(response => {
-        games = response.data
+        console.log(games)
+        games = response.data.filter (game => {
+          return game.summary.length > 10
+        })
+
+        games.splice(4,games.length - 5)
+
         console.log(games)
         return games
     })

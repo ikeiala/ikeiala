@@ -33,7 +33,7 @@
         <h2 class="eventtitles">Lanzamientos en videojuegos:</h2>
         {{#each games}}
           <div class="agendaevent usergames">
-            <div class="agendaeventpic" style="background-image: url(https://i.blogs.es/15b7b8/110910_playstation-logo/450_1000.jpg);background-size:cover"></div>
+            <div class="agendaeventpic" ></div>
             <h3 class="movietitle">{{this.name}}</h3>
             <p class="agendadescription">{{this.summary}} <a class="usergamebut" target="_blank" href={{this.url}}>Leer más</a></p>
           </div>
@@ -48,7 +48,7 @@
 
   <section class="userprofile">
     <div class="usercontent">
-      <h1 class="username">{{user.username}}!</h1>
+      <h1 class="username">{{user.username}}</h1>
       <div class="userpic" style="background-image: url({{user.profile_pic}});background-size:cover"></div>
       <p><b style="font-weight: bolder">Bio:</b> {{user.bio}}</p>
 

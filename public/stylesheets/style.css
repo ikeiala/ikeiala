@@ -160,7 +160,7 @@ form.search-form::after {
   height: 120%; }
 
 .home-today {
-  width: 82%;
+  width: 90%;
   margin: 40px auto; }
   .home-today h1 {
     font-size: 2.8em;
@@ -183,6 +183,12 @@ form.search-form::after {
     width: 100%;
     height: 300px;
     border-radius: 10px; }
+  .home-container .home-movietitle {
+    color: #00cec9; }
+  .home-container .home-serietitle {
+    color: #d63031; }
+  .home-container .home-gametitle {
+    color: #0984e3; }
 
 .event-container {
   width: 33%;
@@ -204,6 +210,14 @@ form.search-form::after {
   display: flex;
   flex-wrap: wrap; }
 
+.container-row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; }
+
+.container, .container-row {
+  margin-bottom: 20px; }
+
 .day img {
   object-fit: cover;
   width: 100%;
@@ -215,27 +229,47 @@ form.search-form::after {
   border-bottom: 2px solid; }
 
 h2.movies {
-  border-color: #00cec9; }
+  border-color: #00cec9;
+  width: 100%; }
+
+h3.movies {
+  color: #00cec9; }
 
 i.movies {
   color: #00cec9; }
 
 h2.series {
-  border-color: #d63031; }
+  border-color: #d63031;
+  width: 100%; }
+
+h3.series {
+  color: #d63031; }
 
 i.series {
   color: #d63031; }
+
+h2.games {
+  width: 100%;
+  border-color: #0984e3; }
+
+h3.games {
+  color: #0984e3; }
+
+i.games {
+  color: #0984e3; }
 
 .partial {
   width: 33%;
   padding: 10px; }
 
+.partial-game {
+  width: 100%; }
+
 .partial h3 {
   font-size: 1.5em;
   padding: 5px;
   text-transform: uppercase;
-  font-weight: 700;
-  color: #778beb; }
+  font-weight: 700; }
 
 .partial p {
   padding: 5px;
@@ -266,6 +300,81 @@ i.series {
 
 .partial button:hover {
   color: #e49141; }
+
+.partial a {
+  font-size: 0.7em;
+  text-decoration: none;
+  color: white;
+  background-color: #e49141;
+  padding: 2px 8px; }
+
+.container-wiki {
+  display: flex;
+  flex-direction: row;
+  background-color: #dfe6e9;
+  border: 1px solid #dfe6e9;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); }
+
+.container-wiki h2 {
+  width: 80%;
+  margin-bottom: 20px; }
+
+.container-wiki img {
+  width: 300px;
+  margin: 20px;
+  border-radius: 20px; }
+
+.container-wiki ul {
+  margin: 20px 0; }
+
+.container-wiki li {
+  padding: 5px;
+  margin: 10px 0; }
+
+.container-wiki strong {
+  font-weight: 700;
+  color: #778beb; }
+
+.container-wiki a {
+  margin-left: 10px;
+  font-size: 0.7em;
+  text-decoration: none;
+  color: white;
+  background-color: #e49141;
+  padding: 2px 8px; }
+
+.commentlist {
+  color: #778beb;
+  margin-top: 70px;
+  margin-left: 90px;
+  font-weight: 700; }
+
+.addcommentlist {
+  color: #778beb;
+  margin-top: 40px;
+  margin-left: 90px;
+  font-weight: 700; }
+
+#textcomment {
+  margin-left: 82px;
+  width: 50%;
+  border-radius: 4px;
+  border: 1px solid #adadad; }
+
+#textcomment:hover {
+  border: 2px solid #778beb; }
+
+.addcommentbut {
+  width: 120px;
+  height: 30px;
+  background-color: #778beb;
+  border-radius: 7px;
+  color: #c8d1ff;
+  border: none;
+  margin-left: 82px;
+  margin-top: 5px; }
 
 .usercontainer {
   margin-left: auto;
@@ -362,13 +471,13 @@ i.series {
 
 .usergamebut {
   display: inline-block;
-  margin-top: 5px;
+  font-size: .8em;
   text-align: center;
   text-decoration: none;
   background-color: #e49141;
   border-radius: 2px;
-  padding: 2px;
-  color: white; }
+  color: white;
+  padding: 0 5px; }
 
 .eventtitles {
   margin-top: 30px;
@@ -406,6 +515,24 @@ footer a {
 
 footer a:hover {
   color: #f7d794; }
+
+.commentevent {
+  position: relative;
+  margin: 10px 0  5px 80px;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: .7rem;
+  width: 50%; }
+  .commentevent h5 {
+    color: #e49141; }
+
+.commenteventpic {
+  position: absolute;
+  transform: translateX(-80px);
+  width: 50px;
+  height: 50px;
+  border-radius: 25px; }
 
 :root {
   --vcal-bg-color: #fff;

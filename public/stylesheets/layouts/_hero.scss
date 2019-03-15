@@ -42,7 +42,7 @@
 }
 
 .home-today{
-  width: 82%;
+  width: 90%;
   margin: 40px auto;
 
   h1{
@@ -75,6 +75,19 @@
     width: 100%;
     height: 300px;
     border-radius: 10px;
+  }
+
+  .home-movietitle{
+    color:  #00cec9;
+  }
+
+
+  .home-serietitle{
+    color: #d63031;
+  }
+
+  .home-gametitle{
+    color: #0984e3;
   }
 }
 
