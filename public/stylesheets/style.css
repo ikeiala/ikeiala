@@ -165,14 +165,14 @@ form.search-form::after {
   height: 120%; }
 
 .home-today {
-  width: 82%;
+  width: 90%;
   margin: 40px auto; }
   .home-today h1 {
-    font-size: 2.8em;
-    margin-bottom: 10px; }
+    font-size: 2.5em;
+    margin-bottom: 15px; }
   .home-today h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.4em;
+    margin-bottom: 15px;
     text-align: left;
     border-bottom: 2px solid; }
   .home-today h3 {
@@ -188,6 +188,12 @@ form.search-form::after {
     width: 100%;
     height: 300px;
     border-radius: 10px; }
+  .home-container .home-movietitle {
+    color: #00cec9; }
+  .home-container .home-serietitle {
+    color: #d63031; }
+  .home-container .home-gametitle {
+    color: #0984e3; }
 
 .event-container {
   width: 33%;
@@ -437,6 +443,37 @@ i.wiki {
 .add {
   max-width: 250px; }
 
+.commentlist {
+  color: #778beb;
+  margin-top: 70px;
+  margin-left: 90px;
+  font-weight: 700; }
+
+.addcommentlist {
+  color: #778beb;
+  margin-top: 40px;
+  margin-left: 90px;
+  font-weight: 700; }
+
+#textcomment {
+  margin-left: 82px;
+  width: 50%;
+  border-radius: 4px;
+  border: 1px solid #adadad; }
+
+#textcomment:hover {
+  border: 2px solid #778beb; }
+
+.addcommentbut {
+  width: 120px;
+  height: 30px;
+  background-color: #778beb;
+  border-radius: 7px;
+  color: #c8d1ff;
+  border: none;
+  margin-left: 82px;
+  margin-top: 5px; }
+
 .usercontainer {
   margin-left: auto;
   margin-right: auto;
@@ -519,8 +556,8 @@ i.wiki {
   width: 140px;
   height: 140px;
   border-radius: 70px;
-  border: 8px solid #b1beff;
-  z-index: 200; }
+  z-index: 200;
+  border: 8px solid #778beb; }
 
 .agendadescription {
   max-height: 1.2em;
@@ -536,13 +573,13 @@ i.wiki {
 
 .usergamebut {
   display: inline-block;
-  margin-top: 5px;
+  font-size: .8em;
   text-align: center;
   text-decoration: none;
   background-color: #e49141;
   border-radius: 2px;
-  padding: 2px;
-  color: white; }
+  color: white;
+  padding: 0 5px; }
 
 .eventtitles {
   margin-top: 30px;
@@ -580,6 +617,24 @@ footer a {
 
 footer a:hover {
   color: #f7d794; }
+
+.commentevent {
+  position: relative;
+  margin: 10px 0  5px 80px;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: .7rem;
+  width: 50%; }
+  .commentevent h5 {
+    color: #e49141; }
+
+.commenteventpic {
+  position: absolute;
+  transform: translateX(-80px);
+  width: 50px;
+  height: 50px;
+  border-radius: 25px; }
 
 :root {
   --vcal-bg-color: #fff;

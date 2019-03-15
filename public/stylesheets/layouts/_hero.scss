@@ -42,17 +42,17 @@
 }
 
 .home-today{
-  width: 82%;
+  width: 90%;
   margin: 40px auto;
 
   h1{
-    font-size: 2.8em;
-    margin-bottom: 10px;
+    font-size: 2.5em;
+    margin-bottom: 15px;
   }
 
   h2{
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.4em;
+    margin-bottom: 15px;
     text-align: left;
     border-bottom: 2px solid;
   }
@@ -75,6 +75,19 @@
     width: 100%;
     height: 300px;
     border-radius: 10px;
+  }
+
+  .home-movietitle{
+    color:  #00cec9;
+  }
+
+
+  .home-serietitle{
+    color: #d63031;
+  }
+
+  .home-gametitle{
+    color: #0984e3;
   }
 }
 

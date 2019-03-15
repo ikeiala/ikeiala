@@ -75,19 +75,18 @@
     {{/each}}
 
 
-    <hr>
-    <h1 id="commentlist">COMMENTS</h1>
-
+    <h1 class="commentlist">COMMENTS</h1>
+    <div id="commentlist">
     {{#each comments}}
     {{> commentPartial }}
     {{/each}}
-
+    </div>
     {{#if user}}
-    <hr>
-    <h1>ADD A NEW COMMENT:</h1>
-    <label>Text: <textarea id="textcomment" cols="50" name="text"
-        placeholder="¿Qué quieres decir?"></textarea></label><br><br>
-    <div><button class="add" onclick="addComment(`{{id}}`)">Enviar</button></div>
+
+    <h1 class="addcommentlist">ADD A NEW COMMENT:</h1>
+    <textarea id="textcomment" cols="50" name="text"
+        placeholder="¿Qué quieres decir?"></textarea>
+    <button class="addcommentbut" onclick="addComment(`{{id}}`)">Enviar</button>
     {{/if}}
 
   </div>

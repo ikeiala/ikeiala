@@ -285,3 +285,48 @@ i.wiki {
 .add {
   max-width: 250px;
 }
+// <div class="container" id="#wiki">
+//       <img src={{wiki.img}}>
+//         <ul>
+//           {{#each wiki.wikis}}
+//           <li>{{this.year}}: {{this.description}}</li>
+//           <p><a href={{this.link}}>Leer más</a></p>
+//           {{/each}}
+//         </ul>
+//     </div>
+
+.commentlist {
+  color: $purple;
+  margin-top: 70px;
+  margin-left: 90px;
+  font-weight: 700;
+}
+
+.addcommentlist{
+  color: $purple;
+  margin-top: 40px;
+  margin-left: 90px;
+  font-weight: 700;
+}
+
+#textcomment{
+  margin-left: 82px;
+  width: 50%;
+  border-radius: 4px;
+  border: 1px solid rgb(173, 173, 173);
+}
+
+#textcomment:hover{
+  border: 2px solid $purple;
+}
+
+.addcommentbut{
+  width: 120px;
+  height: 30px;
+  background-color: $purple;
+  border-radius: 7px;
+  color:$search-text-purple;
+  border: none;
+  margin-left: 82px;
+  margin-top: 5px;
+}
