@@ -53,6 +53,7 @@ table {
   box-sizing: border-box; }
 
 body {
+  background-color: rgba 200, 209, 255, 0.4;
   font-family: 'Quicksand', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.25;
@@ -241,7 +242,8 @@ form.search-form::after {
 
 .day {
   width: 80%;
-  margin: 50px auto; }
+  margin: 50px auto;
+  background-color: rgba 200, 209, 255, 0.4; }
 
 .container {
   display: flex;
