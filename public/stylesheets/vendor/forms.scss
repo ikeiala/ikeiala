@@ -38,8 +38,9 @@
   left:50%;
   transform: translate(-50%, -50%);
 	overflow: hidden;
-	box-shadow: 5px 5px #111;
-	z-index: 2;
+  box-shadow: 5px 5px  rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  position: fixed;
 }
 @media only screen and (max-width: 600px) {
   .container {
@@ -172,7 +173,7 @@ button:hover {
 	margin-bottom: 5px;
 	color: white;
 	padding: 0 10px 0 10px;
-	box-shadow: 2px 5px #222;
+	box-shadow: 2px 5px rgba(0, 0, 0, 0.3);
 }
 .l-form label {
 	color: white;
@@ -197,7 +198,7 @@ button:hover {
 	position: absolute;
 	top: 105px;
 	color: $purple;
-	box-shadow: 2px 5px #222;
+	box-shadow: 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -218,7 +219,7 @@ button:hover {
 	color: white;
 	padding: 0 10px 0 10px;
 	width: 150px;
-	box-shadow: 2px 5px #222;
+	box-shadow: 2px 5px rgba(0, 0, 0, 0.3);
 }
 .r-form label {
 	color: white;
@@ -265,7 +266,7 @@ button:hover {
   // padding: 0 10px 0 10px;
   border-radius: 50px;
 	color: white;
-  box-shadow: 2px 5px #222;
+  box-shadow: 2px 5px rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
   // font-size: .9rem;
   margin-bottom: 5px;
@@ -303,7 +304,7 @@ button:hover {
 	top: 160px;
 	right: -150px;
 	color: $purple;
-	box-shadow: 2px 5px #222;
+	box-shadow: 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .l-disc {
@@ -363,7 +364,7 @@ button:hover {
 
 
 .area{
-    background: #222;
+    background: rgba(0, 0, 0, 0.3);
     width: 100%;
     height:100vh;
     position: absolute;
@@ -533,7 +534,7 @@ button:hover {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #222; 
+    background: rgba(0, 0, 0, 0.3); 
 }
 
 /* Handle */

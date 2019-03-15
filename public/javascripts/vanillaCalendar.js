@@ -126,6 +126,8 @@ var vanillaCalendar = {
         // picked.value = this.dataset.calendarDate
         _this.removeActiveClass()
         this.classList.add('vcal-date--selected')
+
+        document.getElementById('pepe').submit();
         
       })
     }
